@@ -16,7 +16,7 @@ dists:
 	$(BIN)/dists.exe
 
 hello:
-	echo 'aasf'
+	echo 'oi'
 
 #clean:
 #	rm $(OBJ)//*.o
