@@ -5,12 +5,24 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <math.h>
+#include <string.h>
+#include "include\ManipulaVetores.h"
+
 
 int main()
 {
-    // ok
-    
+    // Exemplo de uso de funções da ManipulaVetores.h
+    int tam;
+    scanf("%i", &tam);
+
+    int a[tam], b[tam], soma[tam];
+
+    leVet(a, tam);
+    leVet(b, tam);
+
+    somaVet(a, b, tam, soma);
+    printaVet(soma, tam);
+
     return 0;
 }
