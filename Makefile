@@ -16,7 +16,7 @@ dists:
 	$(BIN)/dists.exe
 
 hello:
-	echo 'oi'
+	echo 'sim'
 
 #clean:
 #	rm $(OBJ)//*.o
