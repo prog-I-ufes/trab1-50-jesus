@@ -1,5 +1,6 @@
 #include "../include/ManipulaVetores.h"
 #include <stdio.h>
+#include <math.h>
 
 // gcc -c $(SRC)/ManipulaVetores.c -I $(INCLUDE) -o $(OBJ)/main.o
 
@@ -34,7 +35,7 @@ void printaVet(float a[], int tam)
 
     for (i = 0; i < tam; i++)
     {
-        printf("%f\n", a[i]);
+        printf("%.2f\n", a[i]);
     }
 
     printf("\n");
@@ -71,6 +72,17 @@ void prodVet(float a[], float b[], int tam, float *vetProd)
     }
 }
 
+void absVet(float a[], int tam, float *vetAbs)
+{
+    int i;
+
+    for (i = 0; i < tam; i++)
+    {
+        vetAbs[i] = abs(a[i]);
+    }
+}
+
+// Caso particular de expVet
 void quadradoVet(float a[], int tam, float *vetQuadrado)
 {
     int i;
@@ -78,6 +90,16 @@ void quadradoVet(float a[], int tam, float *vetQuadrado)
     for (i = 0; i < tam; i++)
     {
         vetQuadrado[i] = a[i] * a[i];
+    }
+}
+
+void expVet(float a[], int tam, float e, float *vetElevado)
+{
+    int i;
+
+    for (i = 0; i < tam; i++)
+    {
+        vetElevado[i] = powf(a[i], e);
     }
 }
 

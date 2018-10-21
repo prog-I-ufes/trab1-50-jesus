@@ -16,8 +16,10 @@ int main()
     int tam;
     printf("Tamanho dos vetores:\n");
     scanf("%i", &tam);
+    // printf("r: ");
+    // scanf("%i", &tam);
 
-    float a[tam], b[tam], soma[tam], distE;
+    float a[tam], b[tam], soma[tam], teste1[tam], teste2[tam], teste3[tam], distE, distM;
 
     leVet(a, tam);
     leVet(b, tam);
@@ -27,7 +29,10 @@ int main()
     printaVet(soma, tam);
 
     distEuclid(a, b, tam, &distE);
-    printf("Distancia euclidiana: %.2f\n", distE);
+    printf("Distancia euclidiana: %.2f", distE);
+    // distMinkowsky(a, b, tam, r, &distM);
+    // printf("Distancia minkowskiana: %.2f", distM);
+
 
     return 0;
 }

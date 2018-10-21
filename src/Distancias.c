@@ -20,7 +20,19 @@ void round2(float *n)
 {
     *n = (round(*n * 100)) / 100;
 }
+//
 
+void distMinkowsky(float p[], float q[], int k, float r, float *distM)
+{
+    float i, s[k], distancias = 0;
+
+    subVet(p, q, k, s);
+    absVet(s, k, s);
+    expVet(s, k, r, s);
+    somaElementosVet(s, k, &distancias);
+    distancias = pow(distancias, 1 / r);
+    *distM = distancias;
+}
 
 /*
 int main()
