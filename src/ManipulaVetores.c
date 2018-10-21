@@ -1,8 +1,11 @@
 #include "../include/ManipulaVetores.h"
 #include <stdio.h>
 
-//	gcc -c $(SRC)/ManipulaVetores.c -I $(INCLUDE) -o $(OBJ)/main.o
+// gcc -c $(SRC)/ManipulaVetores.c -I $(INCLUDE) -o $(OBJ)/main.o
 
+// gcc -c $(SRC)/ManipulaVetores.c -I $(INCLUDE) -o $(OBJ)/ManipulaVetores.o
+
+// Soma todos os elementos de um vetor entre si
 void somaElementosVet(int a[], int tam, int *somaElementos)
 {
     int i;
@@ -23,7 +26,6 @@ void leVet(int *a, int tam)
     }
 
     printf("\n");
-
 }
 
 void printaVet(int a[], int tam)
@@ -36,9 +38,7 @@ void printaVet(int a[], int tam)
     }
 
     printf("\n");
-
 }
-
 
 void somaVet(int a[], int b[], int tam, int *vetSoma)
 {
@@ -49,7 +49,6 @@ void somaVet(int a[], int b[], int tam, int *vetSoma)
         vetSoma[i] = a[i] + b[i];
     }
 }
-
 
 // Subtrai B de A
 void subVet(int a[], int b[], int tam, int *vetSub)
@@ -62,7 +61,6 @@ void subVet(int a[], int b[], int tam, int *vetSub)
     }
 }
 
-
 void prodVet(int a[], int b[], int tam, int *vetProd)
 {
     int i;
@@ -73,7 +71,6 @@ void prodVet(int a[], int b[], int tam, int *vetProd)
     }
 }
 
-
 void quadradoVet(int a[], int tam, int *vetQuadrado)
 {
     int i;
@@ -83,7 +80,6 @@ void quadradoVet(int a[], int tam, int *vetQuadrado)
         vetQuadrado[i] = a[i] * a[i];
     }
 }
-
 
 /*
 int main()
