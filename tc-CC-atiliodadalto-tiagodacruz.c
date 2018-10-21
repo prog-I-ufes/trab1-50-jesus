@@ -17,7 +17,7 @@ int main()
     printf("Tamanho dos vetores:\n");
     scanf("%i", &tam);
 
-    int a[tam], b[tam], soma[tam], distE;
+    float a[tam], b[tam], soma[tam], distE;
 
     leVet(a, tam);
     leVet(b, tam);
@@ -27,7 +27,7 @@ int main()
     printaVet(soma, tam);
 
     distEuclid(a, b, tam, &distE);
-    printf("Distancia euclidiana: %i", distE);
+    printf("Distancia euclidiana: %f", distE);
 
     return 0;
 }

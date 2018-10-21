@@ -3,9 +3,9 @@
 #include <stdio.h>
 #include <math.h>
 
-void distEuclid(int p[], int q[], int k, int *distE)
+void distEuclid(float p[], float q[], int k, float *distE)
 {
-    int i, s[k], distancias = 0;
+    float i, s[k], distancias = 0;
 
     subVet(p, q, k, s);                  // (pi - qi), ..., (pn - qn)
     quadradoVet(s, k, s);                // (pi - qi)^2, ..., (pn - qn)^2

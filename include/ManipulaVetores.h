@@ -1,7 +1,7 @@
-void leVet(int *a, int tam);
-void printaVet(int a[], int tam);
-void somaVet(int a[], int b[], int tam, int *vetSoma);
-void subVet(int a[], int b[], int tam, int *vetSub);
-void prodVet(int a[], int b[], int tam, int *vetProd);
-void quadradoVet(int a[], int tam, int *vetQuadrado);
-void somaElementosVet(int a[], int tam, int *somaElementos);
+void leVet(float *a, int tam);
+void printaVet(float a[], int tam);
+void somaVet(float a[], float b[], int tam, float *vetSoma);
+void subVet(float a[], float b[], int tam, float *vetSub);
+void prodVet(float a[], float b[], int tam, float *vetProd);
+void quadradoVet(float a[], int tam, float *vetQuadrado);
+void somaElementosVet(float a[], int tam, float *somaElementos);

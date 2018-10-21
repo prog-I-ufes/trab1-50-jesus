@@ -1,1 +1,1 @@
-void distEuclid(int p[], int q[], int k, int *distE);
+void distEuclid(float p[], float q[], int k, float *distE);

@@ -6,7 +6,7 @@
 // gcc -c $(SRC)/ManipulaVetores.c -I $(INCLUDE) -o $(OBJ)/ManipulaVetores.o
 
 // Soma todos os elementos de um vetor entre si
-void somaElementosVet(int a[], int tam, int *somaElementos)
+void somaElementosVet(float a[], int tam, float *somaElementos)
 {
     int i;
 
@@ -16,31 +16,31 @@ void somaElementosVet(int a[], int tam, int *somaElementos)
     }
 }
 
-void leVet(int *a, int tam)
+void leVet(float *a, int tam)
 {
     int i;
 
     for (i = 0; i < tam; i++)
     {
-        scanf("%i", &a[i]);
+        scanf("%f", &a[i]);
     }
 
     printf("\n");
 }
 
-void printaVet(int a[], int tam)
+void printaVet(float a[], int tam)
 {
     int i;
 
     for (i = 0; i < tam; i++)
     {
-        printf("%i\n", a[i]);
+        printf("%f\n", a[i]);
     }
 
     printf("\n");
 }
 
-void somaVet(int a[], int b[], int tam, int *vetSoma)
+void somaVet(float a[], float b[], int tam, float *vetSoma)
 {
     int i;
 
@@ -51,7 +51,7 @@ void somaVet(int a[], int b[], int tam, int *vetSoma)
 }
 
 // Subtrai B de A
-void subVet(int a[], int b[], int tam, int *vetSub)
+void subVet(float a[], float b[], int tam, float *vetSub)
 {
     int i;
 
@@ -61,7 +61,7 @@ void subVet(int a[], int b[], int tam, int *vetSub)
     }
 }
 
-void prodVet(int a[], int b[], int tam, int *vetProd)
+void prodVet(float a[], float b[], int tam, float *vetProd)
 {
     int i;
 
@@ -71,7 +71,7 @@ void prodVet(int a[], int b[], int tam, int *vetProd)
     }
 }
 
-void quadradoVet(int a[], int tam, int *vetQuadrado)
+void quadradoVet(float a[], int tam, float *vetQuadrado)
 {
     int i;
 
