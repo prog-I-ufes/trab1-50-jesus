@@ -1,5 +1,5 @@
-#include "..\include\Distancias.h"
-#include "..\include\ManipulaVetores.h"
+#include "../include/Distancias.h"
+#include "../include/ManipulaVetores.h"
 #include <stdio.h>
 #include <math.h>
 

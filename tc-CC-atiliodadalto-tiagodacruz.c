@@ -7,8 +7,8 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include "include\ManipulaVetores.h"
-#include "include\Distancias.h"
+#include "include/ManipulaVetores.h"
+#include "include/Distancias.h"
 
 int main()
 {
