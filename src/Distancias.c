@@ -12,7 +12,15 @@ void distEuclid(float p[], float q[], int k, float *distE)
     somaElementosVet(s, k, &distancias); // (pi - qi)^2 + ... + (pn - qn)^2
 
     *distE = sqrt(distancias);
+    round2(&distE);
 }
+
+// Colocar em outro módulo posteriormente
+void round2(float *n)
+{
+    *n = (round(*n * 100)) / 100;
+}
+
 
 /*
 int main()

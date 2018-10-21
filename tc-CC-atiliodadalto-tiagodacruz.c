@@ -27,7 +27,7 @@ int main()
     printaVet(soma, tam);
 
     distEuclid(a, b, tam, &distE);
-    printf("Distancia euclidiana: %f", distE);
+    printf("Distancia euclidiana: %.2f", distE);
 
     return 0;
 }
