@@ -16,10 +16,10 @@ int main()
     int tam;
     printf("Tamanho dos vetores:\n");
     scanf("%i", &tam);
-    // printf("r: ");
-    // scanf("%i", &tam);
+    // printf("r: "); // para distância minkowskiana
+    // scanf("%i", &r);
 
-    float a[tam], b[tam], soma[tam], teste1[tam], teste2[tam], teste3[tam], distE, distM;
+    float a[tam], b[tam], soma[tam], distE, distM;
 
     leVet(a, tam);
     leVet(b, tam);
