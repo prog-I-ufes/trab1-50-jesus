@@ -33,6 +33,5 @@ int main()
     // distMinkowsky(a, b, tam, r, &distM);
     // printf("Distancia minkowskiana: %.2f", distM);
 
-
     return 0;
 }
