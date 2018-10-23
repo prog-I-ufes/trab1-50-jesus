@@ -34,6 +34,14 @@ void distMinkowsky(float p[], float q[], int k, float r, float *distM)
     *distM = distancias;
 }
 
+void distSemCoss(float p[], float q[], int k, float *distS){
+    float e, i, s[k], distancias = 0;
+
+    prodVet(p, q, k, s);
+    somaElementosVet(s, k, &i);
+    distEuclid(p, q, k, &e);
+    *distS = i/e;
+}
 /*
 int main()
 {

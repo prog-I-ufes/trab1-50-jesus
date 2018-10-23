@@ -19,7 +19,7 @@ int main()
     // printf("r: "); // para distância minkowskiana
     // scanf("%i", &r);
 
-    float a[tam], b[tam], soma[tam], distE, distM;
+    float a[tam], b[tam], soma[tam], distE, distM, distS;
 
     leVet(a, tam);
     leVet(b, tam);
@@ -29,7 +29,9 @@ int main()
     printaVet(soma, tam);
 
     distEuclid(a, b, tam, &distE);
-    printf("Distancia euclidiana: %.2f", distE);
+    printf("Distancia euclidiana: %.2f\n", distE);
+    // distSemCoss(a, b, tam, &distS);
+    // printf("Distancia por semelhança de cosseno: %.2f\n", distS);
     // distMinkowsky(a, b, tam, r, &distM);
     // printf("Distancia minkowskiana: %.2f", distM);
 
