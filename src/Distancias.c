@@ -15,13 +15,6 @@ void distEuclid(float p[], float q[], int k, float *distE)
     round2(distE);
 }
 
-// Colocar em outro módulo posteriormente
-void round2(float *n)
-{
-    *n = (round(*n * 100)) / 100;
-}
-//
-
 void distMinkowsky(float p[], float q[], int k, float r, float *distM)
 {
     float i, s[k], distancias = 0;
@@ -34,14 +27,17 @@ void distMinkowsky(float p[], float q[], int k, float r, float *distM)
     *distM = distancias;
 }
 
-void distSemCoss(float p[], float q[], int k, float *distS){
-    float e, i, s[k], distancias = 0;
+void distCos(float p[], float q[], int k, float *distS)
+{
+    float distE, s[k], distancias = 0;
 
     prodVet(p, q, k, s);
-    somaElementosVet(s, k, &i);
-    distEuclid(p, q, k, &e);
-    *distS = i/e;
+    somaElementosVet(s, k, &distancias);
+    distEuclid(p, q, k, &distE);
+
+    *distS = distancias / distE;
 }
+
 /*
 int main()
 {
