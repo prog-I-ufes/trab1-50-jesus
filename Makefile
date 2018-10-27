@@ -19,5 +19,6 @@ run:
 hello:
 	echo 'sim'
 
-#clean:
-#	rm $(OBJ)//*.o
+clean:
+	del "$(OBJ)" ".o"
+	del "$(BIN)" ".o"
