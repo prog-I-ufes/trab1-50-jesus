@@ -9,6 +9,7 @@
 #include <string.h>
 #include "include/ManipulaVetores.h"
 #include "include/Distancias.h"
+#include "include/Classificador.h"
 
 int main()
 {
@@ -34,6 +35,7 @@ int main()
     // printf("Distancia por semelhança de cosseno: %.2f\n", distS);
     // distMinkowsky(a, b, tam, r, &distM);
     // printf("Distancia minkowskiana: %.2f", distM);
+    resultadoFinal();
 
     return 0;
 }
