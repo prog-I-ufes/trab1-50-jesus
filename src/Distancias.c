@@ -1,5 +1,6 @@
 #include "../include/Distancias.h"
 #include "../include/ManipulaVetores.h"
+#include "../include/Classificador.h"
 #include <stdio.h>
 #include <math.h>
 

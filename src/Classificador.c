@@ -1,3 +1,7 @@
+#include "../include/Classificador.h"
+#include <stdio.h>
+#include <math.h>
+
 int acuracia(int acertos, int erros)
 {
     int acc;
