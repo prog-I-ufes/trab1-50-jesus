@@ -25,9 +25,9 @@ int main()
     float a[tam], b[tam], soma[tam], distE, distM, distS;
     char prEnd[50], segEnd[50], *d; // endereço do teste, treino e parametros do calculo de distância (Euclidiana, cosseno ou minkowisky)
 
-    k = (int *)malloc(8*sizeof(int));       // parametros k 
-    d = (char *)malloc(8*sizeof(char));     // parametros de distância
-    r = (int *)malloc(8*sizeof(int));       // parametro r para distancia minkowiski
+    k = (int *)malloc(2*sizeof(int));       // parametros k 
+    d = (char *)malloc(2*sizeof(char));     // parametros de distância
+    r = (int *)malloc(2*sizeof(int));       // parametro r para distancia minkowiski
 
     leVet(a, tam);
     leVet(b, tam);
