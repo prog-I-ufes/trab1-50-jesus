@@ -41,7 +41,7 @@ int main()
 
     distEuclid(a, b, tam, &distE);
     printf("Distancia euclidiana: %.2f\n\n---Config---\n\n", distE);
-    printf("%s%s", prEnd, segEnd);
+    printf("%s\n%s\n", prEnd, segEnd);
     for(int i = 0; i < qtdP; i++){
         printf("| %d || %c || %d |\n", k[i], d[i], r[i]);
     }
