@@ -9,8 +9,8 @@ int leConfig(FILE *f, char p1[], char p2[], int **k, char **d, int **r){
         printf("Não existe config.txt aberto no programa\n");
         return -1;
     }
-    fgets(p1, 50, f);
-    fgets(p2, 50, f);
+    fscanf(f, "%s\n", p1);
+    fscanf(f, "%s\n", p2);
     while(!feof(f)){
         fscanf(f, "%d, %c, ", &((*k)[i]), &((*d)[i]));
         if(((*d)[i]) == 'M'){
