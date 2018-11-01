@@ -1,5 +1,6 @@
 testando123.txt
 321odnatset.txt
+opameubom.txt
 3, M, 2
 4, D
 5, C
