@@ -1,1 +1,0 @@
-int leConfig(FILE *f, char p1[], char p2[], int *k[], char *d[], int *r[]);

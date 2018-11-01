@@ -16,7 +16,7 @@ void distEuclid(float p[], float q[], int k, float *distE)
     round2(distE);
 }
 
-void distMinkowsky(float p[], float q[], int k, float r, float *distM)
+void distMinkowski(float p[], float q[], int k, float r, float *distM)
 {
     float i, s[k], distancias = 0;
 
@@ -28,6 +28,7 @@ void distMinkowsky(float p[], float q[], int k, float r, float *distM)
     *distM = distancias;
 }
 
+//TODO: distância de Chebyshev
 void distCos(float p[], float q[], int k, float *distS)
 {
     float distE, s[k], distancias = 0;

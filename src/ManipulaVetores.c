@@ -2,10 +2,6 @@
 #include <stdio.h>
 #include <math.h>
 
-// gcc -c $(SRC)/ManipulaVetores.c -I $(INCLUDE) -o $(OBJ)/main.o
-
-// gcc -c $(SRC)/ManipulaVetores.c -I $(INCLUDE) -o $(OBJ)/ManipulaVetores.o
-
 // Soma todos os elementos de um vetor entre si
 void somaElementosVet(float a[], int tam, float *somaElementos)
 {
