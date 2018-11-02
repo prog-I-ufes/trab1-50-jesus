@@ -99,6 +99,44 @@ void expVet(float a[], int tam, float e, float *vetElevado)
     }
 }
 
+float maiorVet(float a[], int tam)
+{
+    int i;
+    float maior;
+
+    maior = a[0];
+    for (i = 0; i < tam; i++)
+    {
+        if (a[i] > maior)
+        {
+            maior = a[i];
+        }
+    }
+
+    return maior;
+}
+
+// nao consigo nem testar nesse carai
+void boaSort(float a[], int tam, float *ordenado)
+{
+    int i, aux;
+
+    printaVet(a, tam);
+
+    for (i = 0; i < tam; i++)
+    {
+        if (a[i] > a[i + 1])
+        {
+            aux = a[i];
+            a[i] = a[i + 1];
+            a[i + 1] = aux;
+        }
+    }
+
+    printaVet(a, tam);
+}
+
+
 /*
 int main()
 {

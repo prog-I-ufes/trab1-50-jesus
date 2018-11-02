@@ -1,4 +1,5 @@
 #include "../include/Classificador.h"
+#include "../include/ManipulaVetores.h"
 #include <stdio.h>
 #include <math.h>
 
