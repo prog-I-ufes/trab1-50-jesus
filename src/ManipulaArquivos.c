@@ -8,34 +8,42 @@ int leConfig(FILE *f, char **p1, char **p2, char **p3, int **k, char **d, float 
     int i = 0;
     int j = 0;
 
-    while(!feof(f)){
+    while (!feof(f))
+    {
         fscanf(f, "%c", &((*p1)[j]));
-        if((*p1)[j] == '\n'){
+        if ((*p1)[j] == '\n')
+        {
             (*p1)[j] = '\0';
             break;
         }
         j++;
-        *p1 = realloc(*p1, (j+1)*sizeof(char));
+        *p1 = realloc(*p1, (j + 1) * sizeof(char));
     }
     j = 0;
-    while(!feof(f)){
+
+    while (!feof(f))
+    {
         fscanf(f, "%c", &((*p2)[j]));
-        if((*p2)[j] == '\n'){
+        if ((*p2)[j] == '\n')
+        {
             (*p2)[j] = '\0';
             break;
         }
         j++;
-        *p2 = realloc(*p2, (j+1)*sizeof(char));
+        *p2 = realloc(*p2, (j + 1) * sizeof(char));
     }
     j = 0;
-    while(!feof(f)){
+
+    while (!feof(f))
+    {
         fscanf(f, "%c", &((*p3)[j]));
-        if((*p3)[j] == '\n'){
+        if ((*p3)[j] == '\n')
+        {
             (*p3)[j] = '\0';
             break;
         }
         j++;
-        *p3 = realloc(*p3, (j+1)*sizeof(char));
+        *p3 = realloc(*p3, (j + 1) * sizeof(char));
     }
     j = 0;
     //fscanf(f, "%s\n", p2);
@@ -62,4 +70,44 @@ int leConfig(FILE *f, char **p1, char **p2, char **p3, int **k, char **d, float 
     }
 
     return i;
+}
+
+float **leTre(FILE *p, int *ln, int *cl)
+{
+    char try
+        ;
+    float **matriz;
+    int k = 0;
+    int count = 0;
+    matriz = (float **)malloc(1 * sizeof(float *));
+
+    while (!feof(p)) // Conta vírgulas
+    {
+        fscanf(p, "%c", &try);
+        if (try == '\n')
+        {
+            break;
+        }
+        else if (try == ',')
+        {
+            count++;
+        }
+    }
+
+    rewind(p); // Volta para o começo do arquivo
+
+    while (!feof(p)) // Passa arquivo para matriz
+    {
+        matriz[k] = (float *)malloc((count + 1) * sizeof(float));
+        for (int j = 0; j < (count + 1); j++)
+        {
+            fscanf(p, "%f, ", &matriz[k][j]);
+        }
+        k++;
+        matriz = realloc(matriz, (1 + k) * sizeof(float *));
+    }
+
+    *ln = k;       // Retorna linha
+    *cl = count;   // Retorna coluna
+    return matriz; // Retorna matriz
 }
