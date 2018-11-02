@@ -46,8 +46,8 @@ int main()
     // e um ponteiro
     // e um vetor
     //AAAAAAAAAAAAAAAAAAAA*&*&*&*&*&*&&*&**&*&&*&*
-    leVet(ordenadao, tam);
-    boaSort(a, tam, ordenadao);
+    leVet(a, tam);
+    boaSort(a, tam);
 
     // Ex: abrindo config.txt (e printando resultados posteriormente)
     // Libera vetores e fecha programa caso nao consiga abrir config
@@ -55,6 +55,9 @@ int main()
     if (f == NULL)
     {
         printf("Nao foi possivel abrir o config.txt\n");
+        free(k);
+        free(r);
+        free(d);
         free(prEnd);
         free(segEnd);
         free(endR);
@@ -71,7 +74,7 @@ int main()
     // printaVet(soma, tam);
 
     // distEuclid(a, b, tam, &distE);
-    printf("Distancia euclidiana: %.2f\n\n--- Config ---\n\n", distE);
+    // printf("Distancia euclidiana: %.2f\n\n--- Config ---\n\n", distE);
 
     printf("%s\n%s\n%s\n", prEnd, segEnd, endR);
     for (int i = 0; i < qtdP - 1; i++)
@@ -126,7 +129,8 @@ int main()
         free(teste[j]);
     }
     free(teste);
-
+    fclose(tr);
+    fclose(ts);
     fclose(f);
 
     return 0;

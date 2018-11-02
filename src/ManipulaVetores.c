@@ -117,21 +117,22 @@ float maiorVet(float a[], int tam)
 }
 
 // nao consigo nem testar nesse carai
-void boaSort(float a[], int tam, float *ordenado)
+void boaSort(float a[], int tam)
 {
-    int i, aux;
+    int i = 0, aux;
 
     printaVet(a, tam);
 
-    for (i = 0; i < tam; i++)
-    {
-        if (a[i] > a[i + 1])
+    for(int j = 0; j < tam; j++){
+        for (i = 0; i < tam-1; i++)
         {
-            aux = a[i];
-            a[i] = a[i + 1];
-            a[i + 1] = aux;
+            if (a[i] > a[i + 1])
+            {
+                aux = a[i];
+                a[i] = a[i + 1];
+                a[i + 1] = aux;
+            }
         }
     }
-
     printaVet(a, tam);
 }
