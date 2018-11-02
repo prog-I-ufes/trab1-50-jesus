@@ -23,9 +23,12 @@ int main()
     FILE *f;      // variável para config.txt
     int *k, qtdP; // parâmetros do cálculo de distância (coeficiente k e coeficiente r para Minkowski) e quantidade de parâmetros
     float a[tam], b[tam], soma[tam], distE, distM, distS, *r;
-    char prEnd[50], segEnd[50], endR[50], *d; // endereço do teste, treino e parâmetros do cálculo de distância (de Euclides, Minkowski ou Chebyshev)
+    char *prEnd, *segEnd, *endR, *d; // endereço do teste, treino e parâmetros do cálculo de distância (de Euclides, Minkowski ou Chebyshev)
 
     // parâmetros de distância
+    prEnd = (char *) malloc(sizeof(char));
+    segEnd = (char *) malloc(sizeof(char));
+    endR = (char *) malloc(sizeof(char));
     k = (int *)malloc(2 * sizeof(int));
     d = (char *)malloc(2 * sizeof(char));
     r = (float *)malloc(2 * sizeof(float));
@@ -33,8 +36,8 @@ int main()
     leVet(a, tam);
     leVet(b, tam);
 
-    f = fopen("data/iris/config.txt", "r");
-    qtdP = leConfig(f, prEnd, segEnd, endR, &k, &d, &r);
+    f = fopen("config.txt", "r");
+    qtdP = leConfig(f, &prEnd, &segEnd, &endR, &k, &d, &r);
 
     somaVet(a, b, tam, soma);
     printf("Vetor da soma:\n");
@@ -52,6 +55,9 @@ int main()
     free(k);
     free(r);
     free(d);
+    free(prEnd);
+    free(segEnd);
+    free(endR);
     fclose(f);
 
     return 0;
