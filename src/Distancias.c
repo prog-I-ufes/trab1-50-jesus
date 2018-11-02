@@ -38,23 +38,3 @@ void distChebyshev(float p[], float q[], int k, float *distC)
     printaVet(s, k);
     *distC = maiorVet(s, k);
 }
-
-/*
-int main()
-{
-    int i, k, stotal, distE;
-
-    printf("k: ");
-    scanf("%i", &k);
-
-    int p[k], q[k], s[k];
-
-    leVet(p, k);
-    leVet(q, k);
-
-    distEuclid(p, q, s, k, &distE);
-    printf("Distancia euclidiana: %i", distE);
-
-    return 0;
-}
-*/

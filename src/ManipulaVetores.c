@@ -135,26 +135,3 @@ void boaSort(float a[], int tam, float *ordenado)
 
     printaVet(a, tam);
 }
-
-
-/*
-int main()
-{
-    int i, tam = 3, a[tam], b[tam], soma[tam], sub[tam], prod[tam], quadrado[tam];
-
-    leVet(a, tam);
-    leVet(b, tam);
-
-    somaVet(a, b, tam, soma);
-    subVet(a, b, tam, sub);
-    prodVet(a, b, tam, prod);
-    quadradoVet(a, tam, quadrado);
-
-    printaVet(soma, tam);
-    printaVet(sub, tam);
-    printaVet(prod, tam);
-    printaVet(quadrado, tam);
-
-    return 0;
-}
-*/
