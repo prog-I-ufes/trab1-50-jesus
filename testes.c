@@ -128,3 +128,6 @@ int main()
     free(teste);
 
     fclose(f);
+
+    return 0;
+}
