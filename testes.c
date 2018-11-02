@@ -55,9 +55,6 @@ int main()
     if (f == NULL)
     {
         printf("Nao foi possivel abrir o config.txt\n");
-        free(k);
-        free(r);
-        free(d);
         free(prEnd);
         free(segEnd);
         free(endR);
@@ -131,8 +128,3 @@ int main()
     free(teste);
 
     fclose(f);
-    fclose(tr);
-    fclose(ts);
-
-    return 0;
-}
