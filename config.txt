@@ -1,6 +1,6 @@
 testando123.txt
 321odnatset.txt
-opameubom.txt
+opameubom/
 3, M, 2
 4, D
 5, C
