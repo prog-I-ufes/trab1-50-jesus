@@ -7,11 +7,6 @@ int leConfig(FILE *f, char **p1, char **p2, char **p3, int **k, char **d, float 
 {
     int i = 0;
     int j = 0;
-    if (f == NULL)
-    {
-        printf("Nao existe config.txt aberto no programa\n");
-        exit(1);
-    }
 
     while(!feof(f)){
         fscanf(f, "%c", &((*p1)[j]));

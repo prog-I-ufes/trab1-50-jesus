@@ -37,6 +37,17 @@ int main()
     leVet(b, tam);
 
     f = fopen("config.txt", "r");
+    if (f == NULL)
+    {
+        printf("Não foi possivel abrir o config.txt\n");
+        free(k);
+        free(r);
+        free(d);
+        free(prEnd);
+        free(segEnd);
+        free(endR);
+        exit(1);
+    }
     qtdP = leConfig(f, &prEnd, &segEnd, &endR, &k, &d, &r);
 
     somaVet(a, b, tam, soma);
