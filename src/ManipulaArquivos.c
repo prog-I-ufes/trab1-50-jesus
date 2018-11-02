@@ -9,7 +9,7 @@ int leConfig(FILE *f, char p1[], char p2[], char p3[], int **k, char **d, float 
 
     if (f == NULL)
     {
-        printf("Não existe config.txt aberto no programa\n");
+        printf("Nao existe config.txt aberto no programa\n");
         exit(1);
     }
 
