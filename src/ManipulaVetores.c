@@ -100,6 +100,17 @@ void expVet(float a[], int tam, float e, float *vetElevado)
     }
 }
 
+void copiaVet(float *dest, float source[], int tam)
+{
+    int i;
+
+    for (i = 0; i < tam; i++)
+    {
+        dest[i] = source[i];
+    }
+}
+
+
 float maiorVet(float a[], int tam)
 {
     int i;
@@ -120,8 +131,6 @@ float maiorVet(float a[], int tam)
 void boaSort(float a[], int tam, float *ordenado)
 {
     int i = 0, j = 0, aux;
-
-    memcpy(ordenado, a, tam);
 
     for (j = 0; j < tam; j++)
     {
