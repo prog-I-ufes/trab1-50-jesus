@@ -45,7 +45,7 @@ int main()
     distChebyshev(a, b, tam, &distC);
     printf("%.2f\n\n", distC);
 
-    copiaVet(ordenadao, tam, a);
+    copiaVet(ordenadao, a, tam);
     boaSort(a, tam, ordenadao);
     printaVet(ordenadao, tam);
 
