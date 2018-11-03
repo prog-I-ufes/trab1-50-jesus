@@ -28,13 +28,11 @@ void distMinkowski(float p[], float q[], int k, float r, float *distM)
     *distM = distancias;
 }
 
-// que merda é essa
 void distChebyshev(float p[], float q[], int k, float *distC)
 {
     float distE, s[k], distancias = 0;
 
     subVet(p, q, k, s);
     absVet(s, k, s);
-    printaVet(s, k);
     *distC = maiorVet(s, k);
 }

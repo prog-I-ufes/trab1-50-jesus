@@ -1,6 +1,7 @@
 #include "../include/ManipulaVetores.h"
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 
 // Soma todos os elementos de um vetor entre si
 void somaElementosVet(float a[], int tam, float *somaElementos)
@@ -116,23 +117,22 @@ float maiorVet(float a[], int tam)
     return maior;
 }
 
-// nao consigo nem testar nesse carai
-void boaSort(float a[], int tam)
+void boaSort(float a[], int tam, float *ordenado)
 {
-    int i = 0, aux;
+    int i = 0, j = 0, aux;
 
-    printaVet(a, tam);
+    memcpy(ordenado, a, tam);
 
-    for(int j = 0; j < tam; j++){
-        for (i = 0; i < tam-1; i++)
+    for (j = 0; j < tam; j++)
+    {
+        for (i = 0; i < tam - 1; i++)
         {
-            if (a[i] > a[i + 1])
+            if (ordenado[i] > ordenado[i + 1])
             {
-                aux = a[i];
-                a[i] = a[i + 1];
-                a[i + 1] = aux;
+                aux = ordenado[i];
+                ordenado[i] = ordenado[i + 1];
+                ordenado[i + 1] = aux;
             }
         }
     }
-    printaVet(a, tam);
 }

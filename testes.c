@@ -25,7 +25,7 @@ int main()
     FILE *ts; // Variável para config.txt
 
     int *k, qtdP; // Parâmetros do cálculo de distância (coeficiente k e coeficiente r para Minkowski) e quantidade de parâmetros
-    float a[tam], b[tam], soma[tam], ordenadao[tam], SotC[tam], distE, distM, distS, *r;
+    float a[tam], b[tam], soma[tam], ordenadao[tam], distE, distM, distC, *r;
     char *prEnd, *segEnd, *endR, *d; // Endereço do teste, treino e parâmetros do cálculo de distância (de Euclides, Minkowski ou Chebyshev)
 
     float **treino;
@@ -40,14 +40,14 @@ int main()
     d = (char *)malloc(2 * sizeof(char));
     r = (float *)malloc(2 * sizeof(float));
 
-    // leVet(a, tam);
-
-    // mas o ordenadão é um vetor
-    // e um ponteiro
-    // e um vetor
-    //AAAAAAAAAAAAAAAAAAAA*&*&*&*&*&*&&*&**&*&&*&*
     leVet(a, tam);
-    boaSort(a, tam);
+    leVet(b, tam);
+    distChebyshev(a, b, tam, &distC);
+    printf("%.2f\n\n", distC);
+
+    copiaVet(ordenadao, tam, a);
+    boaSort(a, tam, ordenadao);
+    printaVet(ordenadao, tam);
 
     // Ex: abrindo config.txt (e printando resultados posteriormente)
     // Libera vetores e fecha programa caso nao consiga abrir config
@@ -79,7 +79,7 @@ int main()
     printf("%s\n%s\n%s\n", prEnd, segEnd, endR);
     for (int i = 0; i < qtdP - 1; i++)
     {
-        printf("| %d || %c || %f |\n", k[i], d[i], r[i]);
+        printf("| %d || %c || %.2f |\n", k[i], d[i], r[i]);
     }
 
     // Passa o conteúdo do treino e do teste para matriz
