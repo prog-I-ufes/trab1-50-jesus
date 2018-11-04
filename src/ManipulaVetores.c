@@ -3,6 +3,18 @@
 #include <math.h>
 #include <string.h>
 
+// abs reimplementado
+float absolute(float n){
+    if(n < 0){
+        return -n;
+    }else{
+        return n;
+    }
+}
+
+
+
+
 // Soma todos os elementos de um vetor entre si
 void somaElementosVet(float a[], int tam, float *somaElementos)
 {
@@ -75,7 +87,7 @@ void absVet(float a[], int tam, float *vetAbs)
 
     for (i = 0; i < tam; i++)
     {
-        vetAbs[i] = abs(a[i]);
+        vetAbs[i] = absolute(a[i]);
     }
 }
 
