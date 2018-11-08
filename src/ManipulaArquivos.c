@@ -48,10 +48,11 @@ int leConfig(FILE *f, char **p1, char **p2, char **p3, int **k, char **d, float 
     j = 0;
     //fscanf(f, "%s\n", p2);
     //fscanf(f, "%s\n", p3);
-
+    i = 0;
     while (!feof(f))
     {
-        fscanf(f, "%d, %c, ", &((*k)[i]), &((*d)[i]));
+        fscanf(f, "%d, ", &((*k)[i]));
+        fscanf(f, "%c, ", &((*d)[i]));
 
         if (((*d)[i]) == 'M')
         {

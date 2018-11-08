@@ -12,7 +12,7 @@
 #include "include/Classificador.h"
 #include "include/ManipulaArquivos.h"
 
-void predict(int prNum, char preDir[]/*,int k, char distType, float mR, float **treino, float **teste, int colTre, int linTre, int colTes, int linTes*/){
+void predict(int prNum, char preDir[],int k, char distType, float mR, float **treinoMat, float **testeMat, int colTre, int linTre, int colTes, int linTes){
     char teste[strlen(preDir)];
     strcpy(teste, preDir);
     char num[12];
@@ -22,23 +22,23 @@ void predict(int prNum, char preDir[]/*,int k, char distType, float mR, float **
     strcat(preDir, ".txt");
     printf("%s\n", preDir);
     strcpy(preDir, teste);
-    /*switch(distType){
+    switch(distType){
         case 'M':
-            for(int i = 0; i < linTes; i++){
-
-            }
+            //for(int i = 0; i < linTes; i++){
+            printf("Minkowisky\n");
+            //}
             break;
         case 'E':
-            for(int i = 0; i < linTes; i++){
-
-            }
+            //for(int i = 0; i < linTes; i++){
+            printf("Euclidiana\n");
+            //}
             break;
         case 'C':
-            for(int i = 0; i < linTes; i++){
-
-            }
+            //for(int i = 0; i < linTes; i++){
+            printf("Chebyshev\n");
+            //}
             break;
-    }*/
+    }
 
 }
 
@@ -149,8 +149,8 @@ int main()
         printf("\n");
     }
     printf("\n\n\n-------TESTE DE PREDICT-------\n\n\n");
-    for(int i = 0; i < 10; i++){
-        predict(i+1, endR);
+    for(int i = 0; i < qtdP-1; i++){
+        predict(i+1, endR, k[i], d[i], r[i], treino, teste, colunaTr, linhaTr, colunaTe, linhaTe);
     }
     // Libera vetores antes de fechar o programa
     free(k);
