@@ -43,7 +43,7 @@ int leConfig(FILE *f, char **p1, char **p2, char **p3, int **k, char **d, float 
             break;
         }
         j++;
-        *p3 = realloc(*p3, (j + 1) * sizeof(char));
+        *p3 = realloc(*p3, (j + 30) * sizeof(char));
     }
     j = 0;
     //fscanf(f, "%s\n", p2);

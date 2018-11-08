@@ -12,6 +12,45 @@
 #include "include/Classificador.h"
 #include "include/ManipulaArquivos.h"
 
+void predict(int prNum, char preDir[]/*,int k, char distType, float mR, float **treino, float **teste, int colTre, int linTre, int colTes, int linTes*/){
+    char teste[strlen(preDir)];
+    strcpy(teste, preDir);
+    char num[12];
+    sprintf(num, "%d", prNum);
+    strcat(preDir, "predicao_");
+    strcat(preDir, num);
+    strcat(preDir, ".txt");
+    printf("%s\n", preDir);
+    strcpy(preDir, teste);
+    /*switch(distType){
+        case 'M':
+            for(int i = 0; i < linTes; i++){
+
+            }
+            break;
+        case 'E':
+            for(int i = 0; i < linTes; i++){
+
+            }
+            break;
+        case 'C':
+            for(int i = 0; i < linTes; i++){
+
+            }
+            break;
+    }*/
+
+}
+
+
+
+
+
+
+
+
+
+
 // Exemplo de uso de funções dos módulos
 int main()
 {
@@ -109,7 +148,10 @@ int main()
         }
         printf("\n");
     }
-
+    printf("\n\n\n-------TESTE DE PREDICT-------\n\n\n");
+    for(int i = 0; i < 10; i++){
+        predict(i+1, endR);
+    }
     // Libera vetores antes de fechar o programa
     free(k);
     free(r);
