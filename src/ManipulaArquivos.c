@@ -51,6 +51,8 @@ int leConfig(FILE *f, char **p1, char **p2, char **p3, int **k, char **d, float 
     i = 0;
     while (!feof(f))
     {
+        ((*d)[i]) = ' ';
+
         fscanf(f, "%d, ", &((*k)[i]));
         fscanf(f, "%c, ", &((*d)[i]));
 

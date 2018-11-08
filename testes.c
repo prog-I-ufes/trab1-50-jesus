@@ -108,10 +108,6 @@ int main()
     tr = fopen(prEnd, "r");
     ts = fopen(segEnd, "r");
 
-    // somaVet(a, b, tam, soma);
-    // printf("Vetor da soma:\n");
-    // printaVet(soma, tam);
-
     // distEuclid(a, b, tam, &distE);
     // printf("Distancia euclidiana: %.2f\n\n--- Config ---\n\n", distE);
 
