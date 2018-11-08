@@ -14,7 +14,7 @@ allL:
 	gcc -c "$(SRC)/Classificador.c" -o "$(OBJ)/Classificador.o" -g
 	gcc -c "$(SRC)/ManipulaArquivos.c" -o "$(OBJ)/ManipulaArquivos.o" -g
 	gcc -c testes.c -o "$(OBJ)/main.o" -g
-	gcc $(OBJ)/*.o -o $(BIN)/main.exe  -lm -g
+	gcc $(OBJ)/*.o -o $(BIN)/main.out  -lm -g
 	eject
 	eject -t
 	make runL
@@ -36,11 +36,11 @@ runW:
 	$(BIN)/main.exe
 
 runL:
-	valgrind $(BIN)/main.exe
+	valgrind $(BIN)/main.out
+	make cleanL
 
 cleanL:
 	-rm $(OBJ)/*.o
-	-rm $(BIN)/*.exe
 
 cleanW:
 	del /F /Q "$(OBJ)" ".o"
