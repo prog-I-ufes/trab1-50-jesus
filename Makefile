@@ -10,6 +10,8 @@ all:
 	gcc -c "$(SRC)/ManipulaArquivos.c" -o "$(OBJ)/ManipulaArquivos.o" -g
 	gcc -c testes.c -o "$(OBJ)/main.o" -g
 	gcc $(OBJ)/*.o -o $(BIN)/main.exe  -lm -g
+	eject
+	eject -t
 
 run:
 	$(BIN)/main.exe
