@@ -75,7 +75,7 @@ int leConfig(FILE *f, char **p1, char **p2, char **p3, int **k, char **d, float 
     return i;
 }
 
-float **leTre(FILE *p, int *ln, int *cl)
+float **leTreino(FILE *p, int *ln, int *cl)
 {
     char try
         ;

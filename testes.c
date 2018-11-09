@@ -12,61 +12,60 @@
 #include "include/Classificador.h"
 #include "include/ManipulaArquivos.h"
 
-void predict(int prNum, char preDir[],int k, char distType, float mR, float **treinoMat, float **testeMat, int colTre, int linTre, int colTes, int linTes){
+void predict(int prNum, char preDir[], int k, char distType, float mR, float **treinoMat, float **testeMat, int colTreino, int linTreino, int colTeste, int linTeste)
+{
     char teste[strlen(preDir)];
+
     strcpy(teste, preDir);
+
     char num[12];
+
     sprintf(num, "%d", prNum);
     strcat(preDir, "predicao_");
     strcat(preDir, num);
     strcat(preDir, ".txt");
     printf("%s\n", preDir);
-    float dists[linTre];
-    switch(distType){
-        case 'M':
-            for(int i = 0; i < linTes; i++){
-                printf("Minkowski: linha = %d\n", i+1);
-                printaVet(testeMat[i], colTes-1);
-                for(int j = 0; j < linTre; j++){
-                    distMinkowski(testeMat[i], treinoMat[j], colTes-1, mR, &dists[j]);
-                }
-                printf("\n");
-                printaVet(dists, linTre);
+
+    float dists[linTreino];
+
+    switch (distType)
+    {
+    case 'M':
+        for (int i = 0; i < linTeste; i++)
+        {
+            printf("Minkowski: linha = %d\n", i + 1);
+            printaVet(testeMat[i], colTeste - 1);
+            for (int j = 0; j < linTreino; j++)
+            {
+                distMinkowski(testeMat[i], treinoMat[j], colTeste - 1, mR, &dists[j]);
             }
-            break;
-        case 'E':
-            for(int i = 0; i < linTes; i++){
-                printf("Euclidiana: linha = %d\n", i+1);
-                printaVet(testeMat[i], colTes-1);
-            }
-            break;
-        case 'C':
-            for(int i = 0; i < linTes; i++){
-                printf("Chebyshev: linha = %d\n", i+1);
-                printaVet(testeMat[i], colTes-1);
-            }
-            break;
+            printf("\n");
+            printaVet(dists, linTreino);
+        }
+        break;
+    case 'E':
+        for (int i = 0; i < linTeste; i++)
+        {
+            printf("Euclidiana: linha = %d\n", i + 1);
+            printaVet(testeMat[i], colTeste - 1);
+        }
+        break;
+    case 'C':
+        for (int i = 0; i < linTeste; i++)
+        {
+            printf("Chebyshev: linha = %d\n", i + 1);
+            printaVet(testeMat[i], colTeste - 1);
+        }
+        break;
     }
+
     strcpy(preDir, teste);
-
 }
-
-
-
-
-
-
-
-
-
 
 // Exemplo de uso de funções dos módulos
 int main()
 {
     int tam;
-
-    printf("Tamanho dos vetores:\n");
-    scanf("%i", &tam);
 
     FILE *f;
     FILE *tr;
@@ -78,15 +77,25 @@ int main()
 
     float **treino;
     float **teste;
-    int linhaTr, colunaTr, linhaTe, colunaTe;
+    int linhaTreino, colunaTreino, linhaTeste, colunaTeste;
 
     // Parâmetros de distância
+    /*
+    ==2657== 1 errors in context 2 of 2:
+    ==2657== Use of uninitialised value of size 8
+    ==2657==    at 0x401E31: main (testes.c:89) (ali embaixo)
+    */
+
     prEnd = (char *)malloc(sizeof(char));
     segEnd = (char *)malloc(sizeof(char));
     endR = (char *)malloc(sizeof(char));
     k = (int *)malloc(2 * sizeof(int));
     d = (char *)malloc(2 * sizeof(char));
     r = (float *)malloc(2 * sizeof(float));
+
+    /* Teste com vetores (sort, distâncias, etc):
+    printf("Tamanho dos vetores:\n");
+    scanf("%i", &tam);
 
     leVet(a, tam);
     leVet(b, tam);
@@ -95,7 +104,7 @@ int main()
 
     copiaVet(ordenadao, a, tam);
     boaSort(a, tam, ordenadao);
-    printaVet(ordenadao, tam);
+    printaVet(ordenadao, tam); */
 
     // Ex: abrindo config.txt (e printando resultados posteriormente)
     // Libera vetores e fecha programa caso nao consiga abrir config
@@ -117,9 +126,6 @@ int main()
     tr = fopen(prEnd, "r");
     ts = fopen(segEnd, "r");
 
-    // distEuclid(a, b, tam, &distE);
-    // printf("Distancia euclidiana: %.2f\n\n--- Config ---\n\n", distE);
-
     printf("%s\n%s\n%s\n", prEnd, segEnd, endR);
     for (int i = 0; i < qtdP - 1; i++)
     {
@@ -127,15 +133,15 @@ int main()
     }
 
     // Passa o conteúdo do treino e do teste para matriz
-    treino = leTre(tr, &linhaTr, &colunaTr);
-    teste = leTre(ts, &linhaTe, &colunaTe);
+    treino = leTreino(tr, &linhaTreino, &colunaTreino);
+    teste = leTreino(ts, &linhaTeste, &colunaTeste);
     printf("\n\n");
 
     // Printa treino
     printf("---- Treino (%s) -----\n\n", prEnd);
-    for (int j = 0; j < (linhaTr - 1); j++)
+    for (int j = 0; j < (linhaTreino - 1); j++)
     {
-        for (int m = 0; m < colunaTr + 1; m++)
+        for (int m = 0; m < colunaTreino + 1; m++)
         {
             printf("%.2f ", treino[j][m]);
         }
@@ -145,18 +151,20 @@ int main()
     // Printa teste
     printf("\n\n");
     printf("---- Teste (%s) ----\n\n", segEnd);
-    for (int j = 0; j < (linhaTe - 1); j++)
+    for (int j = 0; j < (linhaTeste - 1); j++)
     {
-        for (int m = 0; m < colunaTe + 1; m++)
+        for (int m = 0; m < colunaTeste + 1; m++)
         {
             printf("%.2f ", teste[j][m]);
         }
         printf("\n");
     }
     printf("\n\n\n-------TESTE DE PREDICT-------\n\n\n");
-    for(int i = 0; i < qtdP-1; i++){
-        predict(i+1, endR, k[i], d[i], r[i], treino, teste, colunaTr + 1, linhaTr - 1, colunaTe + 1, linhaTe - 1);
+    for (int i = 0; i < qtdP - 1; i++)
+    {
+        predict(i + 1, endR, k[i], d[i], r[i], treino, teste, colunaTreino + 1, linhaTreino - 1, colunaTeste + 1, linhaTeste - 1);
     }
+
     // Libera vetores antes de fechar o programa
     free(k);
     free(r);
@@ -165,13 +173,13 @@ int main()
     free(segEnd);
     free(endR);
 
-    for (int j = 0; j < linhaTr; j++)
+    for (int j = 0; j < linhaTreino; j++)
     {
         free(treino[j]);
     }
     free(treino);
 
-    for (int j = 0; j < linhaTe; j++)
+    for (int j = 0; j < linhaTeste; j++)
     {
         free(teste[j]);
     }
