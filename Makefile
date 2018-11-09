@@ -25,8 +25,6 @@ allL:
 	gcc -c testes.c -o "$(OBJ)/main.o" -g
 	gcc $(OBJ)/*.o -o $(BIN)/main.out  -lm -g
 	# compilar .out mesmo sera sera hmm 🤔
-	eject
-	eject -t
 	echo ora parece que voce foi tapeado o sol eh prato
 	make val
 

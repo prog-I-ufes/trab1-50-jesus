@@ -21,24 +21,33 @@ void predict(int prNum, char preDir[],int k, char distType, float mR, float **tr
     strcat(preDir, num);
     strcat(preDir, ".txt");
     printf("%s\n", preDir);
-    strcpy(preDir, teste);
+    float dists[linTre];
     switch(distType){
         case 'M':
-            //for(int i = 0; i < linTes; i++){
-            printf("Minkowski\n");
-            //}
+            for(int i = 0; i < linTes; i++){
+                printf("Minkowski: linha = %d\n", i+1);
+                printaVet(testeMat[i], colTes-1);
+                for(int j = 0; j < linTre; j++){
+                    distMinkowski(testeMat[i], treinoMat[j], colTes-1, mR, &dists[j]);
+                }
+                printf("\n");
+                printaVet(dists, linTre);
+            }
             break;
         case 'E':
-            //for(int i = 0; i < linTes; i++){
-            printf("Euclidiana\n");
-            //}
+            for(int i = 0; i < linTes; i++){
+                printf("Euclidiana: linha = %d\n", i+1);
+                printaVet(testeMat[i], colTes-1);
+            }
             break;
         case 'C':
-            //for(int i = 0; i < linTes; i++){
-            printf("Chebyshev\n");
-            //}
+            for(int i = 0; i < linTes; i++){
+                printf("Chebyshev: linha = %d\n", i+1);
+                printaVet(testeMat[i], colTes-1);
+            }
             break;
     }
+    strcpy(preDir, teste);
 
 }
 
@@ -146,7 +155,7 @@ int main()
     }
     printf("\n\n\n-------TESTE DE PREDICT-------\n\n\n");
     for(int i = 0; i < qtdP-1; i++){
-        predict(i+1, endR, k[i], d[i], r[i], treino, teste, colunaTr, linhaTr, colunaTe, linhaTe);
+        predict(i+1, endR, k[i], d[i], r[i], treino, teste, colunaTr + 1, linhaTr - 1, colunaTe + 1, linhaTe - 1);
     }
     // Libera vetores antes de fechar o programa
     free(k);
