@@ -85,18 +85,20 @@ void predict(int prNum, char preDir[], int k, char distType, float mR, float **t
 
     strcpy(preDir, teste);
 }
-
 // Exemplo de uso de funções dos módulos
 int main()
 {
-    int tam;
+    /*int tam;
+
+    printf("Tamanho dos vetores:\n");
+    scanf("%i", &tam);*/
 
     FILE *f;
     FILE *tr;
     FILE *ts; // Variável para config.txt
 
     int *k, qtdP; // Parâmetros do cálculo de distância (coeficiente k e coeficiente r para Minkowski) e quantidade de parâmetros
-    float a[tam], b[tam], soma[tam], ordenadao[tam], distE, distM, distC, *r;
+    float /*a[tam], b[tam], soma[tam], ordenadao[tam], distE, distM, distC,*/ *r;
     char *prEnd, *segEnd, *endR, *d; // Endereço do teste, treino e parâmetros do cálculo de distância (de Euclides, Minkowski ou Chebyshev)
 
     float **treino;
@@ -104,32 +106,21 @@ int main()
     int linhaTreino, colunaTreino, linhaTeste, colunaTeste;
 
     // Parâmetros de distância
-    /*
-    ==2657== 1 errors in context 2 of 2:
-    ==2657== Use of uninitialised value of size 8
-    ==2657==    at 0x401E31: main (testes.c:89) (ali embaixo)
-    */
-
-    prEnd = (char *)malloc(1*sizeof(char));
-    segEnd = (char *)malloc(1*sizeof(char));
-    endR = (char *)malloc(1*sizeof(char));
-    prEnd[0] = ' ';
+    prEnd = (char *)malloc(sizeof(char));
+    segEnd = (char *)malloc(sizeof(char));
+    endR = (char *)malloc(sizeof(char));
     k = (int *)malloc(2 * sizeof(int));
     d = (char *)malloc(2 * sizeof(char));
     r = (float *)malloc(2 * sizeof(float));
 
-    /* Teste com vetores (sort, distâncias, etc):
-    printf("Tamanho dos vetores:\n");
-    scanf("%i", &tam);
-
-    leVet(a, tam);
+    /*leVet(a, tam);
     leVet(b, tam);
     distChebyshev(a, b, tam, &distC);
     printf("%.2f\n\n", distC);
 
     copiaVet(ordenadao, a, tam);
     boaSort(a, tam, ordenadao);
-    printaVet(ordenadao, tam); */
+    printaVet(ordenadao, tam);*/
 
     // Ex: abrindo config.txt (e printando resultados posteriormente)
     // Libera vetores e fecha programa caso nao consiga abrir config
@@ -150,6 +141,9 @@ int main()
     qtdP = leConfig(f, &prEnd, &segEnd, &endR, &k, &d, &r);
     tr = fopen(prEnd, "r");
     ts = fopen(segEnd, "r");
+
+    // distEuclid(a, b, tam, &distE);
+    // printf("Distancia euclidiana: %.2f\n\n--- Config ---\n\n", distE);
 
     printf("%s\n%s\n%s\n", prEnd, segEnd, endR);
     for (int i = 0; i < qtdP - 1; i++)
@@ -185,11 +179,9 @@ int main()
         printf("\n");
     }
     printf("\n\n\n-------TESTE DE PREDICT-------\n\n\n");
-    for (int i = 0; i < qtdP - 1; i++)
-    {
-        predict(i + 1, endR, k[i], d[i], r[i], treino, teste, colunaTreino + 1, linhaTreino - 1, colunaTeste + 1, linhaTeste - 1);
+    for(int i = 0; i < qtdP-1; i++){
+        predict(i+1, endR, k[i], d[i], r[i], treino, teste, colunaTreino + 1, linhaTreino - 1, colunaTeste + 1, linhaTeste - 1);
     }
-
     // Libera vetores antes de fechar o programa
     free(k);
     free(r);
