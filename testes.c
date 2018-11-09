@@ -34,27 +34,51 @@ void predict(int prNum, char preDir[], int k, char distType, float mR, float **t
         for (int i = 0; i < linTeste; i++)
         {
             printf("Minkowski: linha = %d\n", i + 1);
+            printf("-------------AMOSTRA DE TESTE----------\n");
             printaVet(testeMat[i], colTeste - 1);
             for (int j = 0; j < linTreino; j++)
             {
+                printf("-------------AMOSTRA DE TREINO DE NUMERO %d----------\n", j+1);
+                printaVet(treinoMat[j], colTreino - 1);
                 distMinkowski(testeMat[i], treinoMat[j], colTeste - 1, mR, &dists[j]);
             }
             printf("\n");
-            printaVet(dists, linTreino);
+            printf("------VETOR DE DISTÂNCIAS-----\n");
+            printaVet(dists, linTreino);;
         }
         break;
     case 'E':
         for (int i = 0; i < linTeste; i++)
         {
             printf("Euclidiana: linha = %d\n", i + 1);
+            printf("-------------AMOSTRA DE TESTE----------\n");
             printaVet(testeMat[i], colTeste - 1);
+            for (int j = 0; j < linTreino; j++)
+            {
+                printf("-------------AMOSTRA DE TREINO DE NUMERO %d----------\n", j+1);
+                printaVet(treinoMat[j], colTreino - 1);
+                distEuclid(testeMat[i], treinoMat[j], colTeste - 1, &dists[j]);
+            }
+            printf("\n");
+            printf("------VETOR DE DISTÂNCIAS-----\n");
+            printaVet(dists, linTreino);
         }
         break;
     case 'C':
         for (int i = 0; i < linTeste; i++)
         {
             printf("Chebyshev: linha = %d\n", i + 1);
+            printf("-------------AMOSTRA DE TESTE----------\n");
             printaVet(testeMat[i], colTeste - 1);
+            for (int j = 0; j < linTreino; j++)
+            {
+                printf("-------------AMOSTRA DE TREINO DE NUMERO %d----------\n", j+1);
+                printaVet(treinoMat[j], colTreino - 1);
+                distChebyshev(testeMat[i], treinoMat[j], colTeste - 1, &dists[j]);
+            }
+            printf("\n");
+            printf("------VETOR DE DISTÂNCIAS-----\n");
+            printaVet(dists, linTreino);
         }
         break;
     }
@@ -86,9 +110,10 @@ int main()
     ==2657==    at 0x401E31: main (testes.c:89) (ali embaixo)
     */
 
-    prEnd = (char *)malloc(sizeof(char));
-    segEnd = (char *)malloc(sizeof(char));
-    endR = (char *)malloc(sizeof(char));
+    prEnd = (char *)malloc(1*sizeof(char));
+    segEnd = (char *)malloc(1*sizeof(char));
+    endR = (char *)malloc(1*sizeof(char));
+    prEnd[0] = ' ';
     k = (int *)malloc(2 * sizeof(int));
     d = (char *)malloc(2 * sizeof(char));
     r = (float *)malloc(2 * sizeof(float));
