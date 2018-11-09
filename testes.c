@@ -25,7 +25,7 @@ void predict(int prNum, char preDir[],int k, char distType, float mR, float **tr
     switch(distType){
         case 'M':
             //for(int i = 0; i < linTes; i++){
-            printf("Minkowisky\n");
+            printf("Minkowski\n");
             //}
             break;
         case 'E':
