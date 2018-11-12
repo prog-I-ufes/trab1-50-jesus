@@ -25,7 +25,7 @@ allL:
 	gcc -c testes.c -o "$(OBJ)/main.o" -g
 	gcc $(OBJ)/*.o -o $(BIN)/main.out  -lm -g
 	echo -e "\n-------------------\n F U N C I O N O U \n\n G R A Z A D E U S\n-------------------\n"
-	make val
+	#make val
 
 allW:
 	make clean
@@ -36,7 +36,7 @@ allW:
 	gcc -c testes.c -o "$(OBJ)/main.o" -g
 	gcc $(OBJ)/*.o -o $(BIN)/main.exe  -lm -g
 	echo -e "\n-------------------\n F U N C I O N O U \n\n G R A Z A D E U S\n-------------------\n"
-	make run
+	#make run
 
 run:
 ifeq ($(UNAME), Linux)
