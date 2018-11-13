@@ -10,3 +10,4 @@ void copiaVet(float *dest, float source[], int tam);
 float maiorVet(float a[], int tam);
 void boaSort(float a[], int tam, float *ordenado);
 void somaElementosVet(float a[], int tam, float *somaElementos);
+void douBoaSort(float a[], float b[], int tam);

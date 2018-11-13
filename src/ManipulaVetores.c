@@ -32,7 +32,7 @@ void printaVet(float a[], int tam)
 
     for (i = 0; i < tam; i++)
     {
-        printf("%.2f\n", a[i]);
+        printf("Posição: %d,  %.2f\n",i , a[i]);
     }
 
     printf("\n");
@@ -129,7 +129,8 @@ float maiorVet(float a[], int tam)
 
 void boaSort(float a[], int tam, float *ordenado)
 {
-    int i = 0, j = 0, aux;
+    int i = 0, j = 0;
+    float aux;
 
     for (j = 0; j < tam; j++)
     {
@@ -140,6 +141,29 @@ void boaSort(float a[], int tam, float *ordenado)
                 aux = ordenado[i];
                 ordenado[i] = ordenado[i + 1];
                 ordenado[i + 1] = aux;
+            }
+        }
+    }
+}
+
+
+void douBoaSort(float a[], float b[], int tam){
+    int i = 0, j = 0;
+    float aux;
+
+    for (j = 0; j < tam; j++)
+    {
+        for (i = 0; i < tam - 1; i++)
+        {
+            if (a[i] > a[i + 1])
+            {
+                aux = a[i];
+                a[i] = a[i + 1];
+                a[i + 1] = aux;
+                
+                aux = b[i];
+                b[i] = b[i + 1];
+                b[i + 1] = aux;
             }
         }
     }
