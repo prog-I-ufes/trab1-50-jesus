@@ -32,7 +32,7 @@ void printaVet(float a[], int tam)
 
     for (i = 0; i < tam; i++)
     {
-        printf("Posição: %d,  %.2f\n",i , a[i]);
+        printf("Posicao %d: %.2f\n", i, a[i]);
     }
 
     printf("\n");
@@ -146,8 +146,9 @@ void boaSort(float a[], int tam, float *ordenado)
     }
 }
 
-
-void douBoaSort(float a[], float b[], int tam){
+// Simplesmente a versão para float (finge que é pra double)
+void douBoaSort(float a[], float b[], int tam)
+{
     int i = 0, j = 0;
     float aux;
 
@@ -160,7 +161,7 @@ void douBoaSort(float a[], float b[], int tam){
                 aux = a[i];
                 a[i] = a[i + 1];
                 a[i + 1] = aux;
-                
+
                 aux = b[i];
                 b[i] = b[i + 1];
                 b[i + 1] = aux;

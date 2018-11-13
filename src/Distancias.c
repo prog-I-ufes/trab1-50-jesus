@@ -11,7 +11,6 @@ void distEuclid(float p[], float q[], int k, float *distE)
     subVet(p, q, k, s);                  // (pi - qi), ..., (pn - qn)
     quadradoVet(s, k, s);                // (pi - qi)^2, ..., (pn - qn)^2
     somaElementosVet(s, k, &distancias); // (pi - qi)^2 + ... + (pn - qn)^2
-
     *distE = sqrt(distancias);
     round2(distE);
 }
