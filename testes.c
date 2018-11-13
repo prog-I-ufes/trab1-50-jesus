@@ -12,7 +12,7 @@
 #include "include/Classificador.h"
 #include "include/ManipulaArquivos.h"
 
-void predict(int prNum, char preDir[], int k, char distType, float mR, float **treinoMat, float **testeMat, int colTreino, int linTreino, int colTeste, int linTeste)
+void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **treinoMat, float **testeMat, int colTreino, int linTreino, int colTeste, int linTeste)
 {
     char teste[strlen(preDir)];
 
@@ -35,43 +35,48 @@ void predict(int prNum, char preDir[], int k, char distType, float mR, float **t
     float kPrimeirosRot[k];
     float kPrimeirosDist[k];
 
-    for(int j = 0; j < linTreino; j++){
-                rotulosTreino[j] = treinoMat[j][colTreino-1];
-                rotulosTreinoSORT[j] = treinoMat[j][colTreino-1];;
+    for (int j = 0; j < linTreino; j++)
+    {
+        rotulosTreino[j] = treinoMat[j][colTreino - 1];
+        rotulosTreinoSORT[j] = treinoMat[j][colTreino - 1];
     }
+
     boaSort(rotulosTreinoSORT, linTreino, rotulosTreinoSORT);
     float matrizConfusao[(int)rotulosTreinoSORT[linTreino - 1]][(int)rotulosTreinoSORT[linTreino - 1]];
 
-    switch (distType)
+    switch (tipoDist)
     {
     case 'M':
         for (int i = 0; i < linTeste; i++)
         {
             printf("Minkowski: linha = %d\n", i + 1);
-            printf("-------------AMOSTRA DE TESTE----------\n");
+            printf("------------ AMOSTRA DE TESTE ------------\n");
             printaVet(testeMat[i], colTeste - 1);
             for (int j = 0; j < linTreino; j++)
             {
-                printf("-------------AMOSTRA DE TREINO DE NUMERO %d----------\n", j+1);
+                printf("---------- AMOSTRA DE TREINO DE NUMERO %d ----------\n", j + 1);
                 printaVet(treinoMat[j], colTreino - 1);
                 distMinkowski(testeMat[i], treinoMat[j], colTeste - 1, mR, &dists[j]);
             }
             printf("\n");
-            printf("------VETOR DE DISTÂNCIAS-----\n");
+            printf("----- VETOR DE DISTANCIAS -----\n");
             printaVet(dists, linTreino);
-            for(int j = 0; j < linTreino; j++){
-                rotulosTreino[j] = treinoMat[j][colTreino-1];
+            for (int j = 0; j < linTreino; j++)
+            {
+                rotulosTreino[j] = treinoMat[j][colTreino - 1];
             }
-            printf("\n\n------VETOR DISTÂNCIAS DESORGANIZADO--------\n\n");
+            printf("\n\n----- VETOR DISTANCIAS DESORGANIZADO -----\n\n");
             printaVet(dists, linTreino);
-            printf("\n\n--------Rotulos DESorganizados-------\n\n");
+            printf("\n\n------- ROTULOS DESORGANIZADOS -------\n\n");
             printaVet(rotulosTreino, linTreino);
             douBoaSort(dists, rotulosTreino, linTreino);
-            printf("\n\n------VETOR DISTÂNCIAS ORGANIZADO--------\n\n");
+            printf("\n\n------- VETOR DISTANCIAS ORGANIZADO -------\n\n");
             printaVet(dists, linTreino);
-            printf("\n\n--------Rotulos organizados-------\n\n");
+            printf("\n\n------- ROTULOS ORGANIZADOS -------\n\n");
             printaVet(rotulosTreino, linTreino);
-            for(int j = 0; j < k; j++){
+
+            for (int j = 0; j < k; j++)
+            {
                 kPrimeirosRot[j] = rotulosTreino[j];
                 kPrimeirosDist[j] = dists[j];
             }
@@ -83,66 +88,72 @@ void predict(int prNum, char preDir[], int k, char distType, float mR, float **t
         for (int i = 0; i < linTeste; i++)
         {
             printf("Euclidiana: linha = %d\n", i + 1);
-            printf("-------------AMOSTRA DE TESTE----------\n");
+            printf("------------ AMOSTRA DE TESTE ----------\n");
             printaVet(testeMat[i], colTeste - 1);
             for (int j = 0; j < linTreino; j++)
             {
-                printf("-------------AMOSTRA DE TREINO DE NUMERO %d----------\n", j+1);
+                printf("------------ AMOSTRA DE TREINO DE NUMERO %d ----------\n", j + 1);
                 printaVet(treinoMat[j], colTreino - 1);
                 distEuclid(testeMat[i], treinoMat[j], colTeste - 1, &dists[j]);
             }
             printf("\n");
-            printf("------VETOR DE DISTÂNCIAS-----\n");
+            printf("----- VETOR DE DISTANCIAS -----\n");
             printaVet(dists, linTreino);
-            for(int j = 0; j < linTreino; j++){
-                rotulosTreino[j] = treinoMat[j][colTreino-1];
+            for (int j = 0; j < linTreino; j++)
+            {
+                rotulosTreino[j] = treinoMat[j][colTreino - 1];
             }
-            printf("\n\n------VETOR DISTÂNCIAS DESORGANIZADO--------\n\n");
+            printf("\n\n------- VETOR DISTANCIAS DESORGANIZADO -------\n\n");
             printaVet(dists, linTreino);
-            printf("\n\n--------Rotulos DESorganizados-------\n\n");
+            printf("\n\n------- Rotulos DESorganizados -------\n\n");
             printaVet(rotulosTreino, linTreino);
             douBoaSort(dists, rotulosTreino, linTreino);
-            printf("\n\n------VETOR DISTÂNCIAS ORGANIZADO--------\n\n");
+            printf("\n\n------- VETOR DISTANCIAS ORGANIZADO -------\n\n");
             printaVet(dists, linTreino);
-            printf("\n\n--------Rotulos organizados-------\n\n");
+            printf("\n\n------- ROTULOS ORGANIZADOS ------\n\n");
             printaVet(rotulosTreino, linTreino);
-            for(int j = 0; j < k; j++){
+
+            for (int j = 0; j < k; j++)
+            {
                 kPrimeirosRot[j] = rotulosTreino[j];
                 kPrimeirosDist[j] = dists[j];
             }
             printaVet(kPrimeirosRot, k);
             printaVet(kPrimeirosDist, k);
         }
-
         break;
     case 'C':
         for (int i = 0; i < linTeste; i++)
         {
             printf("Chebyshev: linha = %d\n", i + 1);
-            printf("-------------AMOSTRA DE TESTE----------\n");
+            printf("------------- AMOSTRA DE TESTE -------------\n");
             printaVet(testeMat[i], colTeste - 1);
             for (int j = 0; j < linTreino; j++)
             {
-                printf("-------------AMOSTRA DE TREINO DE NUMERO %d----------\n", j+1);
+                printf("----------- AMOSTRA DE TREINO DE NUMERO %d -----------\n", j + 1);
                 printaVet(treinoMat[j], colTreino - 1);
                 distChebyshev(testeMat[i], treinoMat[j], colTeste - 1, &dists[j]);
             }
             printf("\n");
-            printf("------VETOR DE DISTÂNCIAS-----\n");
+            printf("----- VETOR DE DISTANCIAS ----\n");
             printaVet(dists, linTreino);
-            for(int j = 0; j < linTreino; j++){
-                rotulosTreino[j] = treinoMat[j][colTreino-1];
+            for (int j = 0; j < linTreino; j++)
+            {
+                rotulosTreino[j] = treinoMat[j][colTreino - 1];
             }
-            printf("\n\n------VETOR DISTÂNCIAS DESORGANIZADO--------\n\n");
+            printf("\n\n----- VETOR DE DISTANCIAS DESORGANIZADO -----\n\n");
             printaVet(dists, linTreino);
-            printf("\n\n--------Rotulos DESorganizados-------\n\n");
+            printf("\n\n------ ROTULOS DESORGANIZADOS ------\n\n");
             printaVet(rotulosTreino, linTreino);
+
             douBoaSort(dists, rotulosTreino, linTreino);
-            printf("\n\n------VETOR DISTÂNCIAS ORGANIZADO--------\n\n");
+            printf("\n\n----- VETOR DISTANCIAS ORGANIZADO -----\n\n");
             printaVet(dists, linTreino);
-            printf("\n\n--------Rotulos organizados-------\n\n");
+            printf("\n\n-------- ROTULOS ORGANIZADOS --------\n\n"); // que
             printaVet(rotulosTreino, linTreino);
-            for(int j = 0; j < k; j++){
+
+            for (int j = 0; j < k; j++)
+            {
                 kPrimeirosRot[j] = rotulosTreino[j];
                 kPrimeirosDist[j] = dists[j];
             }
@@ -155,9 +166,6 @@ void predict(int prNum, char preDir[], int k, char distType, float mR, float **t
     strcpy(preDir, teste);
     fclose(f);
 }
-
-
-
 
 // Exemplo de uso de funções dos módulos
 int main()
@@ -252,10 +260,13 @@ int main()
         }
         printf("\n");
     }
-    printf("\n\n\n-------TESTE DE PREDICT-------\n\n\n");
-    for(int i = 0; i < qtdP - 1; i++){         //qtdP - 1
-        predict(i+1, endR, k[i], d[i], r[i], treino, teste, colunaTreino + 1, linhaTreino - 1, colunaTeste + 1, linhaTeste - 1);
+
+    printf("\n\n\n------ TESTE DE PREDICT ------\n\n\n");
+    for (int i = 0; i < qtdP - 1; i++)
+    {
+        predict(i + 1, endR, k[i], d[i], r[i], treino, teste, colunaTreino + 1, linhaTreino - 1, colunaTeste + 1, linhaTeste - 1);
     }
+
     // Libera vetores antes de fechar o programa
     free(k);
     free(r);
