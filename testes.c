@@ -26,14 +26,20 @@ void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **t
     strcat(preDir, ".txt");
     printf("%s\n", preDir);
 
-    FILE *f;
-    f = fopen(preDir, "w");
+    //FILE *f;
+    //f = fopen(preDir, "w");
 
     float dists[linTreino];
     float rotulosTreino[linTreino];
     float rotulosTreinoSORT[linTreino];
     float kPrimeirosRot[k];
     float kPrimeirosDist[k];
+    float classificassaoOriginal[linTeste];
+    float novaClassificacao[linTeste];
+
+    for(int i = 0; i < linTeste; i++){
+        classificassaoOriginal[i] = testeMat[i][colTeste - 1];
+    }
 
     for (int j = 0; j < linTreino; j++)
     {
@@ -59,8 +65,8 @@ void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **t
                 distMinkowski(testeMat[i], treinoMat[j], colTeste - 1, mR, &dists[j]);
             }
             printf("\n");
-            printf("----- VETOR DE DISTANCIAS -----\n");
-            printaVet(dists, linTreino);
+            //printf("----- VETOR DE DISTANCIAS -----\n");
+            //printaVet(dists, linTreino);
             for (int j = 0; j < linTreino; j++)
             {
                 rotulosTreino[j] = treinoMat[j][colTreino - 1];
@@ -97,8 +103,8 @@ void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **t
                 distEuclid(testeMat[i], treinoMat[j], colTeste - 1, &dists[j]);
             }
             printf("\n");
-            printf("----- VETOR DE DISTANCIAS -----\n");
-            printaVet(dists, linTreino);
+            //printf("----- VETOR DE DISTANCIAS -----\n");
+            //printaVet(dists, linTreino);
             for (int j = 0; j < linTreino; j++)
             {
                 rotulosTreino[j] = treinoMat[j][colTreino - 1];
@@ -135,8 +141,8 @@ void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **t
                 distChebyshev(testeMat[i], treinoMat[j], colTeste - 1, &dists[j]);
             }
             printf("\n");
-            printf("----- VETOR DE DISTANCIAS ----\n");
-            printaVet(dists, linTreino);
+            //printf("----- VETOR DE DISTANCIAS ----\n");
+            //printaVet(dists, linTreino);
             for (int j = 0; j < linTreino; j++)
             {
                 rotulosTreino[j] = treinoMat[j][colTreino - 1];
@@ -164,7 +170,7 @@ void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **t
     }
 
     strcpy(preDir, teste);
-    fclose(f);
+    //fclose(f);
 }
 
 // Exemplo de uso de funções dos módulos
@@ -262,7 +268,7 @@ int main()
     }
 
     printf("\n\n\n------ TESTE DE PREDICT ------\n\n\n");
-    for (int i = 0; i < qtdP - 1; i++)
+    for (int i = 0; i < 1 /*qtdP - 1*/; i++)
     {
         predict(i + 1, endR, k[i], d[i], r[i], treino, teste, colunaTreino + 1, linhaTreino - 1, colunaTeste + 1, linhaTeste - 1);
     }
