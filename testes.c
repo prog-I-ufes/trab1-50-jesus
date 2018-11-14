@@ -96,7 +96,7 @@ void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **t
             }
             //printaVet(kPrimeirosRot, k);
             //printaVet(kPrimeirosDist, k);
-            novaClassificacao[i] = (kPrimeirosRot[0]);// AQUI VAI VIR A FUNÇÃO DE PEGAR A MAIORIA
+            novaClassificacao[i] = maioria(kPrimeirosRot, kPrimeirosDist, k);// AQUI VAI VIR A FUNÇÃO DE PEGAR A MAIORIA
         }
         break;
     case 'E':
@@ -135,7 +135,7 @@ void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **t
             }
             //printaVet(kPrimeirosRot, k);
             //printaVet(kPrimeirosDist, k);
-            novaClassificacao[i] = (kPrimeirosRot[0]);// AQUI VAI VIR A FUNÇÃO DE PEGAR A MAIORIA
+            novaClassificacao[i] = maioria(kPrimeirosRot, kPrimeirosDist, k);;// AQUI VAI VIR A FUNÇÃO DE PEGAR A MAIORIA
         }
         break;
     case 'C':
@@ -175,7 +175,7 @@ void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **t
             }
             //printaVet(kPrimeirosRot, k);
             //printaVet(kPrimeirosDist, k);
-            novaClassificacao[i] = (kPrimeirosRot[0]); // AQUI VAI VIR A FUNÇÃO DE PEGAR A MAIORIA
+            novaClassificacao[i] = maioria(kPrimeirosRot, kPrimeirosDist, k); // AQUI VAI VIR A FUNÇÃO DE PEGAR A MAIORIA
         }
         break;
     }
