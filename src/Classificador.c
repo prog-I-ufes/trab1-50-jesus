@@ -3,11 +3,11 @@
 #include <stdio.h>
 #include <math.h>
 
-int acuracia(int acertos, int erros)
+float acuracia(float acertos, float total)
 {
-    int acc;
+    float acc;
 
-    acc = acertos / erros;
+    acc = acertos / total;
 
     return acc;
 }
