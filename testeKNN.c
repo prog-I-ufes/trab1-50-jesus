@@ -12,7 +12,7 @@
 #include "include/Classificador.h"
 #include "include/ManipulaArquivos.h"
 
-void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **treinoMat, float **testeMat, int colTreino, int linTreino, int colTeste, int linTeste)
+void predict(int prNum, char preDir[], int k, char tipoDist, float rMink, float **treinoMat, float **testeMat, int colTreino, int linTreino, int colTeste, int linTeste)
 {
     char teste[strlen(preDir)];
 
@@ -73,7 +73,7 @@ void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **t
             {
                 //printf("---------- AMOSTRA DE TREINO DE NUMERO %d ----------\n", j + 1);
                 //printaVet(treinoMat[j], colTreino - 1);
-                distMinkowski(testeMat[i], treinoMat[j], colTeste - 1, mR, &dists[j]);
+                distMinkowski(testeMat[i], treinoMat[j], colTeste - 1, rMink, &dists[j]);
             }
             //printf("\n");
             ////printf("----- VETOR DE DISTANCIAS -----\n");
@@ -100,6 +100,10 @@ void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **t
             //printaVet(kPrimeirosRot, k);
             //printaVet(kPrimeirosDist, k);
             novaClassificacao[i] = maioria(kPrimeirosRot, kPrimeirosDist, k); // AQUI VAI VIR A FUNÇÃO DE PEGAR A MAIORIA
+            for(int j = 0; j < k; j++){
+                fprintf(f, "|%.2f, %.2f|", kPrimeirosRot[j], kPrimeirosDist[j]);
+            }
+            fprintf(f, "nova class: %.2f\n", novaClassificacao[i]);
             // PARA DE GRITAR SEU ANIMAL
         }
         break;
@@ -139,8 +143,12 @@ void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **t
             }
             //printaVet(kPrimeirosRot, k);
             //printaVet(kPrimeirosDist, k);
-            novaClassificacao[i] = maioria(kPrimeirosRot, kPrimeirosDist, k);
-            ; // AQUI VAI VIR A FUNÇÃO DE PEGAR A MAIORIA
+            novaClassificacao[i] = maioria(kPrimeirosRot, kPrimeirosDist, k);// AQUI VAI VIR A FUNÇÃO DE PEGAR A MAIORIA
+            for(int j = 0; j < k; j++){
+                fprintf(f, "|%.2f, %.2f|", kPrimeirosRot[j], kPrimeirosDist[j]);
+            }
+            fprintf(f, "nova class: %.2f\n", novaClassificacao[i]);
+            
         }
         break;
     case 'C':
@@ -181,6 +189,10 @@ void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **t
             //printaVet(kPrimeirosRot, k);
             //printaVet(kPrimeirosDist, k);
             novaClassificacao[i] = maioria(kPrimeirosRot, kPrimeirosDist, k); // AQUI VAI VIR A FUNÇÃO DE PEGAR A MAIORIA
+            for(int j = 0; j < k; j++){
+                fprintf(f, "|%.2f, %.2f|", kPrimeirosRot[j], kPrimeirosDist[j]);
+            }
+            fprintf(f, "nova class: %.2f\n", novaClassificacao[i]);
         }
         break;
     }
@@ -191,7 +203,7 @@ void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **t
         {
             acertos++;
         }
-        matrizConfusao[(int)(novaClassificacao[s] - 1)][(int)(classificassaoOriginal[s] - 1)]++; // Matriz de confusão
+        matrizConfusao[(int)(classificassaoOriginal[s] - 1)][(int)(novaClassificacao[s] - 1)]++; // Matriz de confusão
     }
 
     float acc = acuracia(acertos, linTeste);
@@ -215,8 +227,9 @@ void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **t
     {
         fprintf(f, "%d\n", (int)(novaClassificacao[s] - 1));
     }
-
+    
     // Faz o path original voltar
+    printf("%s\n", preDir);
     strcpy(preDir, teste);
     fclose(f);
 }

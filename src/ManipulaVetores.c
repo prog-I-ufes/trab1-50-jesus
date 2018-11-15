@@ -170,6 +170,14 @@ void douBoaSort(float a[], float b[], int tam)
     }
 }
 
+int aparece(float a, float b[], int tam){
+    int count;
+    for(int i = 0; i < tam; i++){
+        count++;
+    }
+    return count;
+}
+
 int tudoIgual(float a[], int tam){
     for(int i = 0; i < tam - 1; i++){
         if(a[i] != a[i + 1]){
@@ -180,25 +188,24 @@ int tudoIgual(float a[], int tam){
 }
 
 float maioria(float a[], float b[], int tam){
-    int count = 0, i, mai;
+    int nVezes = 0;
+	int moda = 0;
+	int comparaV = 0;
     if(tudoIgual(a, tam)){
         return a[0];
     }else{
-        int count = 0, i, mai;
-        for (i = 0; i < tam; i++) {
-            if (count == 0)
-                mai = a[i];
-            if (a[i] == mai) 
-                count++;
-            else
-                count--;
-        }
-        count = 0;
-        for (i = 0; i < tam; i++)
-            if (a[i] == mai)
-                count++;
-        if (count > tam/2)
-            return mai;
-        return -1;
+		for(int p = 0; p < tam; p++){
+			nVezes = 0;
+			for(int k = p+1; k < tam; k++){
+			    if( a[p] == a[k]){
+				    nVezes++;				
+			    }
+			}
+			if (nVezes > comparaV ){
+		    	moda = a[p];
+		    	comparaV = nVezes;
+		    }    
+		}		
+		return moda;	
     }
 }
