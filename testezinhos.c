@@ -17,7 +17,10 @@
 int main()
 {
     // vou jogar dark souls 3 então
-    *int tam;
+    int *tam;
+    float *ordenadao;
+    float *distC;
+    float *a, *b; // se foda
 
     printf("Tamanho dos vetores:\n");
     scanf("%i", &tam);
