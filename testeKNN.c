@@ -39,7 +39,8 @@ void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **t
     float novaClassificacao[linTeste];
     float acertos = 0;
 
-    for(int i = 0; i < linTeste; i++){
+    for (int i = 0; i < linTeste; i++)
+    {
         classificassaoOriginal[i] = testeMat[i][colTeste - 1];
     }
 
@@ -52,9 +53,11 @@ void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **t
     boaSort(rotulosTreinoSORT, linTreino, rotulosTreinoSORT);
     int matrizConfusao[(int)rotulosTreinoSORT[linTreino - 1]][(int)rotulosTreinoSORT[linTreino - 1]];
 
-    for(int j = 0; j < (int)rotulosTreinoSORT[linTreino - 1]; j++){
-        for(int n = 0; n < (int)rotulosTreinoSORT[linTreino - 1]; n++){
-            matrizConfusao[j][n] = 0;//inicializa a matriz com tudo 0
+    for (int j = 0; j < (int)rotulosTreinoSORT[linTreino - 1]; j++)
+    {
+        for (int n = 0; n < (int)rotulosTreinoSORT[linTreino - 1]; n++)
+        {
+            matrizConfusao[j][n] = 0; //inicializa a matriz com tudo 0
         }
     }
 
@@ -96,7 +99,8 @@ void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **t
             }
             //printaVet(kPrimeirosRot, k);
             //printaVet(kPrimeirosDist, k);
-            novaClassificacao[i] = maioria(kPrimeirosRot, kPrimeirosDist, k);// AQUI VAI VIR A FUNÇÃO DE PEGAR A MAIORIA
+            novaClassificacao[i] = maioria(kPrimeirosRot, kPrimeirosDist, k); // AQUI VAI VIR A FUNÇÃO DE PEGAR A MAIORIA
+            // PARA DE GRITAR SEU ANIMAL
         }
         break;
     case 'E':
@@ -135,7 +139,8 @@ void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **t
             }
             //printaVet(kPrimeirosRot, k);
             //printaVet(kPrimeirosDist, k);
-            novaClassificacao[i] = maioria(kPrimeirosRot, kPrimeirosDist, k);;// AQUI VAI VIR A FUNÇÃO DE PEGAR A MAIORIA
+            novaClassificacao[i] = maioria(kPrimeirosRot, kPrimeirosDist, k);
+            ; // AQUI VAI VIR A FUNÇÃO DE PEGAR A MAIORIA
         }
         break;
     case 'C':
@@ -180,74 +185,63 @@ void predict(int prNum, char preDir[], int k, char tipoDist, float mR, float **t
         break;
     }
 
-
-    for(int s = 0; s < linTeste; s++){
-        if(novaClassificacao[s] == classificassaoOriginal[s]){
-            acertos += 1; // quantidade de acertos
+    for (int s = 0; s < linTeste; s++)
+    {
+        if (novaClassificacao[s] == classificassaoOriginal[s])
+        {
+            acertos++;
         }
-        matrizConfusao[(int)(novaClassificacao[s] - 1)][(int)(classificassaoOriginal[s] - 1)]++; // matriz de confusão
+        matrizConfusao[(int)(novaClassificacao[s] - 1)][(int)(classificassaoOriginal[s] - 1)]++; // Matriz de confusão
     }
 
-
     float acc = acuracia(acertos, linTeste);
-    fprintf(f,"%.2f\n\n", acc);// printa a acuracia
+    fprintf(f, "%.2f\n\n", acc);
 
-    for(int j = 0; j < (int)rotulosTreinoSORT[linTreino - 1]; j++){
+    // Printa a matriz de confusão
+    for (int j = 0; j < (int)rotulosTreinoSORT[linTreino - 1]; j++)
+    {
         fprintf(f, "%d", matrizConfusao[j][0]);
-        for(int n = 1; n < (int)rotulosTreinoSORT[linTreino - 1]; n++){
-            fprintf(f, " %d", matrizConfusao[j][n]); // printa a matriz de confusão
+        for (int n = 1; n < (int)rotulosTreinoSORT[linTreino - 1]; n++)
+        {
+            fprintf(f, " %d", matrizConfusao[j][n]);
         }
         fprintf(f, "\n");
     }
 
-
     fprintf(f, "\n");
 
-    for(int s = 0; s < linTeste; s++){
-        fprintf(f, "%d\n", (int) (novaClassificacao[s] - 1)); //printa as novas classificações (o - 1 é por causa da bateria de testes e n esta pronto ja que eu so pego o primeiro dos k)
+    // Printa as novas classificações (o '-1' é por causa da bateria de testes e não está pronto já que eu so pego o primeiro dos k)
+    for (int s = 0; s < linTeste; s++)
+    {
+        fprintf(f, "%d\n", (int)(novaClassificacao[s] - 1));
     }
 
-    //faz o path original voltar
+    // Faz o path original voltar
     strcpy(preDir, teste);
     fclose(f);
 }
 
-// Exemplo de uso de funções dos módulos
 int main()
 {
-    /*int tam;
-
-    printf("Tamanho dos vetores:\n");
-    scanf("%i", &tam);*/
-
     FILE *f;
     FILE *tr;
     FILE *ts; // Variável para config.txt
 
     int *k, qtdP; // Parâmetros do cálculo de distância (coeficiente k e coeficiente r para Minkowski) e quantidade de parâmetros
     float /*a[tam], b[tam], soma[tam], ordenadao[tam], distE, distM, distC,*/ *r;
-    char *prEnd, *segEnd, *endR, *d; // Endereço do teste, treino e parâmetros do cálculo de distância (de Euclides, Minkowski ou Chebyshev)
+    char *pathTreino, *pathTeste, *endR, *d; // Endereço do teste, treino e parâmetros do cálculo de distância (de Euclides, Minkowski ou Chebyshev)
 
     float **treino;
     float **teste;
     int linhaTreino, colunaTreino, linhaTeste, colunaTeste;
 
     // Parâmetros de distância
-    prEnd = (char *)malloc(sizeof(char));
-    segEnd = (char *)malloc(sizeof(char));
+    pathTreino = (char *)malloc(sizeof(char));
+    pathTeste = (char *)malloc(sizeof(char));
     endR = (char *)malloc(sizeof(char));
     k = (int *)malloc(2 * sizeof(int));
     d = (char *)malloc(2 * sizeof(char));
     r = (float *)malloc(2 * sizeof(float));
-
-    /*leVet(a, tam);
-    leVet(b, tam);
-    distChebyshev(a, b, tam, &distC);
-    printf("%.2f\n\n", distC);
-
-    copiaVet(ordenadao, a, tam);
-    boaSort(a, tam, ordenadao);
-    printaVet(ordenadao, tam);*/
 
     // Ex: abrindo config.txt (e printando resultados posteriormente)
     // Libera vetores e fecha programa caso nao consiga abrir config
@@ -258,21 +252,21 @@ int main()
         free(k);
         free(r);
         free(d);
-        free(prEnd);
-        free(segEnd);
+        free(pathTreino);
+        free(pathTeste);
         free(endR);
         exit(1);
     }
 
     // Lê config desejada e abre treino e teste
-    qtdP = leConfig(f, &prEnd, &segEnd, &endR, &k, &d, &r);
-    tr = fopen(prEnd, "r");
-    ts = fopen(segEnd, "r");
+    qtdP = leConfig(f, &pathTreino, &pathTeste, &endR, &k, &d, &r);
+    tr = fopen(pathTreino, "r");
+    ts = fopen(pathTeste, "r");
 
     // distEuclid(a, b, tam, &distE);
     // printf("Distancia euclidiana: %.2f\n\n--- Config ---\n\n", distE);
 
-    printf("%s\n%s\n%s\n", prEnd, segEnd, endR);
+    printf("%s\n%s\n%s\n", pathTreino, pathTeste, endR);
     for (int i = 0; i < qtdP - 1; i++)
     {
         printf("| %d || %c || %.2f |\n", k[i], d[i], r[i]);
@@ -284,7 +278,7 @@ int main()
     printf("\n\n");
 
     // Printa treino
-    printf("---- Treino (%s) -----\n\n", prEnd);
+    printf("---- Treino (%s) -----\n\n", pathTreino);
     for (int j = 0; j < (linhaTreino - 1); j++)
     {
         for (int m = 0; m < colunaTreino + 1; m++)
@@ -296,7 +290,7 @@ int main()
 
     // Printa teste
     printf("\n\n");
-    printf("---- Teste (%s) ----\n\n", segEnd);
+    printf("---- Teste (%s) ----\n\n", pathTeste);
     for (int j = 0; j < (linhaTeste - 1); j++)
     {
         for (int m = 0; m < colunaTeste + 1; m++)
@@ -316,8 +310,8 @@ int main()
     free(k);
     free(r);
     free(d);
-    free(prEnd);
-    free(segEnd);
+    free(pathTreino);
+    free(pathTeste);
     free(endR);
 
     for (int j = 0; j < linhaTreino; j++)

@@ -1,6 +1,8 @@
 /* e tá errado? sim
 essa merda foi commitada sem minha permissão
 
+eis que você não saber usar vetor de ponteiro de ponteiro de vetor
+
  #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -53,4 +55,4 @@ int main()
 
     return 0;
 }
- */
+*/
