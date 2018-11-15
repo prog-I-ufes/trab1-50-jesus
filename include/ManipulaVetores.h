@@ -11,4 +11,6 @@ void copiaVet(float *dest, float source[], int tam);
 float maiorVet(float a[], int tam);
 void boaSort(float a[], int tam, float *ordenado);
 void douBoaSort(float a[], float b[], int tam);
-float maioria(float a[], float b[], int tam);
+int ocorrenciasVet(float a[], float n, int tam);
+int tudoIgualVet(float a[], int tam);
+float maioriaVet(float a[], int tam);

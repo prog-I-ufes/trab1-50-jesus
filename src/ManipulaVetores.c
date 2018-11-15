@@ -1,7 +1,7 @@
 #include "../include/ManipulaVetores.h"
 #include <stdio.h>
 #include <math.h>
-#include <string.h>
+// #include <string.h>  o t i m i z a ç ã o
 
 // Soma todos os elementos de um vetor entre si
 void somaElementosVet(float a[], int tam, float *somaElementos)
@@ -146,7 +146,7 @@ void boaSort(float a[], int tam, float *ordenado)
     }
 }
 
-// Simplesmente a versão para float (finge que é pra double)
+// Versão do boaSort para float (finge que é pra (dou)ble)
 void douBoaSort(float a[], float b[], int tam)
 {
     int i = 0, j = 0;
@@ -170,42 +170,63 @@ void douBoaSort(float a[], float b[], int tam)
     }
 }
 
-int aparece(float a, float b[], int tam){
-    int count;
-    for(int i = 0; i < tam; i++){
-        count++;
+// Quantas vezes um float ocorre no vetor
+int ocorrenciasVet(float a[], float n, int tam)
+{
+    int ocorrencias = 0;
+
+    for (int i = 0; i < tam; i++)
+    {
+        if (a[i] == n)
+        {
+            ocorrencias++;
+        }
     }
-    return count;
+
+    return ocorrencias;
 }
 
-int tudoIgual(float a[], int tam){
-    for(int i = 0; i < tam - 1; i++){
-        if(a[i] != a[i + 1]){
+// Se todos os elementos do vetor são iguais
+int tudoIgualVet(float a[], int tam)
+{
+    int i;
+
+    for (i = 0; i < tam - 1; i++)
+    {
+        if (a[i] != a[i + 1])
+        {
             return 0;
         }
     }
+
     return 1;
 }
 
-float maioria(float a[], float b[], int tam){
-    int nVezes = 0;
-	int moda = 0;
-	int comparaV = 0;
-    if(tudoIgual(a, tam)){
+// Elemento que mais ocorre em um vetor (retorna o 'primeiro' de maior ocorrência)
+float maioriaVet(float a[], int tam)
+{
+    int i, j;
+    int ocorre = 0, maiorOcorrencia = 0;
+    int moda = 0;
+
+    if (tudoIgualVet(a, tam))
+    {
         return a[0];
-    }else{
-		for(int p = 0; p < tam; p++){
-			nVezes = 0;
-			for(int k = p+1; k < tam; k++){
-			    if( a[p] == a[k]){
-				    nVezes++;				
-			    }
-			}
-			if (nVezes > comparaV ){
-		    	moda = a[p];
-		    	comparaV = nVezes;
-		    }    
-		}		
-		return moda;	
+    }
+
+    else
+    {
+        for (i = 0; i < tam; i++)
+        {
+            ocorre = ocorrenciasVet(a, a[i], tam);
+
+            if (ocorre > maiorOcorrencia)
+            {
+                moda = a[i];
+                maiorOcorrencia = ocorre;
+            }
+        }
+
+        return moda;
     }
 }
