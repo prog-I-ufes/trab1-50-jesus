@@ -3,47 +3,51 @@
 #include "../include/ManipulaArquivos.h"
 // #include "../include/Classificador.h"
 
-int leConfig(FILE *f, char **p1, char **p2, char **p3, int **k, char **d, float **r)
+int leConfig(FILE *f, char **pathTreino, char **pathTeste, char **pathEscrita, int **k, char **d, float **r)
 {
     int i = 0;
     int j = 0;
 
+
+    /* Os três whiles se referem à leitura dos endereços
+       de treino, teste e escrita, respectivamente */
+
     while (!feof(f))
     {
-        fscanf(f, "%c", &((*p1)[j]));
-        if ((*p1)[j] == '\n')
+        fscanf(f, "%c", &((*pathTreino)[j]));
+        if ((*pathTreino)[j] == '\n')
         {
-            (*p1)[j] = '\0';
+            (*pathTreino)[j] = '\0';
             break;
         }
         j++;
-        *p1 = realloc(*p1, (j + 1) * sizeof(char));
+        *pathTreino = realloc(*pathTreino, (j + 1) * sizeof(char));
     }
     j = 0;
 
     while (!feof(f))
     {
-        fscanf(f, "%c", &((*p2)[j]));
-        if ((*p2)[j] == '\n')
+        fscanf(f, "%c", &((*pathTeste)[j]));
+        if ((*pathTeste)[j] == '\n')
         {
-            (*p2)[j] = '\0';
+            (*pathTeste)[j] = '\0';
             break;
         }
         j++;
-        *p2 = realloc(*p2, (j + 1) * sizeof(char));
+        *pathTeste = realloc(*pathTeste, (j + 1) * sizeof(char));
     }
     j = 0;
 
     while (!feof(f))
     {
-        fscanf(f, "%c", &((*p3)[j]));
-        if ((*p3)[j] == '\n')
+        fscanf(f, "%c", &((*pathEscrita)[j]));
+        if ((*pathEscrita)[j] == '\n')
         {
-            (*p3)[j] = '\0';
+            (*pathEscrita)[j] = '\0';
             break;
         }
         j++;
-        *p3 = realloc(*p3, (j + 30) * sizeof(char));
+        *pathEscrita = realloc(*pathEscrita, (j + 30) * sizeof(char));
     }
     j = 0;
 
@@ -114,6 +118,6 @@ float **leDados(FILE *p, int *ln, int *cl)
     }
 
     *ln = k;        // Retorna linhas (k vizinhos)
-    *cl = virgulas; // Retorna colunas (cada vírgula é uma coluna)
+    *cl = virgulas; // Retorna colunas (cada vírgula é uma coluna) (cada k uma lágrima)
     return matriz;  // Retorna matriz gerada
 }
