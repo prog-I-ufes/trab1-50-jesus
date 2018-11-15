@@ -99,8 +99,6 @@ int main()
         exit(1);
     }
 
-    // printf("Distancia euclidiana: %.2f\n\n--- Config ---\n\n", distE);
-
     /*
     printf("%s\n%s\n%s\n", pathTreino, pathTeste, pathEscrita);
     for (int i = 0; i < qtdP - 1; i++)
