@@ -22,7 +22,7 @@ allL:
 	gcc -c "$(SRC)/ManipulaVetores.c" -o "$(OBJ)/ManipulaVetores.o" -g
 	gcc -c "$(SRC)/Classificador.c" -o "$(OBJ)/Classificador.o" -g
 	gcc -c "$(SRC)/ManipulaArquivos.c" -o "$(OBJ)/ManipulaArquivos.o" -g
-	gcc -c testes.c -o "$(OBJ)/main.o" -g
+	gcc -c testeKNN.c -o "$(OBJ)/main.o" -g
 	gcc $(OBJ)/*.o -o $(BIN)/main.out  -lm -g
 	echo -e "\n-------------------\n F U N C I O N O U \n\n G R A Z A D E U S\n-------------------\n"
 
@@ -32,7 +32,7 @@ allW:
 	gcc -c "$(SRC)/ManipulaVetores.c" -o "$(OBJ)/ManipulaVetores.o" -g
 	gcc -c "$(SRC)/Classificador.c" -o "$(OBJ)/Classificador.o" -g
 	gcc -c "$(SRC)/ManipulaArquivos.c" -o "$(OBJ)/ManipulaArquivos.o" -g
-	gcc -c testes.c -o "$(OBJ)/main.o" -g
+	gcc -c testeKNN.c -o "$(OBJ)/main.o" -g
 	gcc $(OBJ)/*.o -o $(BIN)/main.exe  -lm -g
 	make run
 
