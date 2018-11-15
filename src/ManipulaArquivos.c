@@ -64,6 +64,7 @@ int leConfig(FILE *f, char **p1, char **p2, char **p3, int **k, char **d, float 
             ((*r)[i]) = 0;
         }
 
+        // Alocação extra (2) por segurança
         *k = realloc(*k, (2 + i) * sizeof(int));
         *d = realloc(*d, (2 + i) * sizeof(char));
         *r = realloc(*r, (2 + i) * sizeof(float));

@@ -1,4 +1,7 @@
-#include <stdio.h>
+/* e tá errado? sim
+essa merda foi commitada sem minha permissão
+
+ #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
@@ -50,3 +53,4 @@ int main()
 
     return 0;
 }
+ */
