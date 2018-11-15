@@ -53,3 +53,6 @@ Mkfile.old
 dkms.conf
 .keep
 .gitkeep
+
+# Predições geradas
+.predicoes/*.txt
