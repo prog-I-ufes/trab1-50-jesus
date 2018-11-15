@@ -274,6 +274,7 @@ int main()
     qtdP = leConfig(f, &pathTreino, &pathTeste, &endR, &k, &d, &r);
     tr = fopen(pathTreino, "r");
     ts = fopen(pathTeste, "r");
+
     if (tr == NULL)
     {
         printf("Nao foi possivel abrir o %s\n", pathTreino);
@@ -304,11 +305,8 @@ int main()
         {
             fclose(tr);
         }
-        fclose(f);
-        exit(1);
     }
 
-    // distEuclid(a, b, tam, &distE);
     // printf("Distancia euclidiana: %.2f\n\n--- Config ---\n\n", distE);
 
     /*printf("%s\n%s\n%s\n", pathTreino, pathTeste, endR);
