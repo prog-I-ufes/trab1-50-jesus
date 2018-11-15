@@ -46,8 +46,7 @@ int leConfig(FILE *f, char **p1, char **p2, char **p3, int **k, char **d, float 
         *p3 = realloc(*p3, (j + 30) * sizeof(char));
     }
     j = 0;
-    //fscanf(f, "%s\n", p2);
-    //fscanf(f, "%s\n", p3);
+
     i = 0;
     while (!feof(f))
     {
@@ -75,42 +74,45 @@ int leConfig(FILE *f, char **p1, char **p2, char **p3, int **k, char **d, float 
     return i;
 }
 
-float **leTreino(FILE *p, int *ln, int *cl)
+float **leDados(FILE *p, int *ln, int *cl)
 {
-    char try
-        ;
+    char caractereAtual;
     float **matriz;
     int k = 0;
-    int count = 0;
+    int virgulas = 0;
     matriz = (float **)malloc(1 * sizeof(float *));
 
     while (!feof(p)) // Conta vírgulas
     {
-        fscanf(p, "%c", &try);
-        if (try == '\n')
+        fscanf(p, "%c", &caractereAtual);
+        if (caractereAtual == '\n')
         {
             break;
         }
-        else if (try == ',')
+        else if (caractereAtual == ',')
         {
-            count++;
+            virgulas++;
         }
     }
 
-    rewind(p); // Volta para o começo do arquivo
+    rewind(p); // Volta para o começo do arquivo após contar todas as vírgulas
 
-    while (!feof(p)) // Passa arquivo para matriz
+    // Passa arquivo para matriz
+    // Aqui, alocamos 'virgulas + 1' pois, após a última vírgula na leitura do arquivo, ainda há um número
+    while (!feof(p))
     {
-        matriz[k] = (float *)malloc((count + 1) * sizeof(float));
-        for (int j = 0; j < (count + 1); j++)
+        matriz[k] = (float *)malloc((virgulas + 1) * sizeof(float));
+
+        for (int j = 0; j < (virgulas + 1); j++)
         {
             fscanf(p, "%f, ", &matriz[k][j]);
         }
+
         k++;
         matriz = realloc(matriz, (1 + k) * sizeof(float *));
     }
 
-    *ln = k;       // Retorna linha
-    *cl = count;   // Retorna coluna
-    return matriz; // Retorna matriz
+    *ln = k;        // Retorna linhas (k vizinhos)
+    *cl = virgulas; // Retorna colunas (cada vírgula é uma coluna)
+    return matriz;  // Retorna matriz gerada
 }

@@ -279,8 +279,8 @@ int main()
     }
 
     // Passa o conteúdo do treino e do teste para matriz
-    treino = leTreino(tr, &linhaTreino, &colunaTreino);
-    teste = leTreino(ts, &linhaTeste, &colunaTeste);
+    treino = leDados(tr, &linhaTreino, &colunaTreino);
+    teste = leDados(ts, &linhaTeste, &colunaTeste);
     printf("\n\n");
 
     // Printa treino

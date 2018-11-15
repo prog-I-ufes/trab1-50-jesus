@@ -1,2 +1,2 @@
 int leConfig(FILE *f, char **p1, char **p2, char **p3, int *k[], char *d[], float *r[]);
-float** leTreino(FILE *p, int *ln, int *cl);
+float** leDados(FILE *p, int *ln, int *cl);
