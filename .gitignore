@@ -55,7 +55,6 @@ dkms.conf
 .gitkeep
 
 # Predições geradas
-.predicoes/*
-
-!.*/.gitkeep
+predicoes/*
+!*/.gitkeep
 # AAAAAAAA VAI SE FUDER GIT
