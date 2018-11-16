@@ -4,7 +4,7 @@
 
 void distEuclid(float p[], float q[], int k, float *distE)
 {
-    float i, s[k], distancias = 0;
+    float s[k], distancias = 0;
 
     subVet(p, q, k, s);                  // (pi - qi), ..., (pn - qn)
     quadradoVet(s, k, s);                // (pi - qi) ^ 2, ..., (pn - qn) ^ 2
@@ -14,7 +14,7 @@ void distEuclid(float p[], float q[], int k, float *distE)
 
 void distMinkowski(float p[], float q[], int k, float r, float *distM)
 {
-    float i, s[k], distancias = 0;
+    float s[k], distancias = 0;
 
     subVet(p, q, k, s);                  // (pi - qi), ..., (pn - qn)
     absVet(s, k, s);                     // (|pi - qi|), ..., (|pn - qn|)
@@ -26,7 +26,7 @@ void distMinkowski(float p[], float q[], int k, float r, float *distM)
 
 void distChebyshev(float p[], float q[], int k, float *distC)
 {
-    float distE, s[k], distancias = 0;
+    float s[k];
 
     subVet(p, q, k, s); // (pi - qi), ..., (pn - qn)
     absVet(s, k, s);    // (|pi - qi|), ..., (|pn - qn|)
