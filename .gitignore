@@ -1,3 +1,4 @@
+# Padrão de gitignore do GitHub para C
 # Prerequisites
 *.d
 
@@ -51,8 +52,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-.keep
-.gitkeep
 
 # Predições geradas
 predicao*.txt
