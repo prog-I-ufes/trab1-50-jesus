@@ -1,58 +1,103 @@
-/* e tá errado? sim
-essa merda foi commitada sem minha permissão
 
-eis que você não saber usar vetor de ponteiro de ponteiro de vetor
-
- #include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
-#include <string.h>
+#include "../include/ManipulaMatrizes.h"
 
-void inicializaMat(float **M, int t)
+void leMat(float **M, int l, int c)
 {
     int i, j_ordana;
 
-    for (i = 0; i < t; i++)
+    printf("Informe os valores da matriz:\n");
+    for (i = 0; i < l; i++)
     {
-        for (j_ordana = 0; j_ordana < t; j_ordana++)
+        for (j_ordana = 0; j_ordana < c; j_ordana++)
+        {
+            scanf("%f", &M[i][j_ordana]);
+        }
+    }
+}
+
+// Até duas casas decimais
+void printaMat(int l, int c, int M[l][c])
+{
+    int i, j_ordana;
+
+    printf("\n");
+    for (i = 0; i < l; i++)
+    {
+        for (j_ordana = 0; j_ordana < c; j_ordana++)
+        {
+            printf("%.2f ", M[i][j_ordana]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
+void fprintaMat(FILE *f, int l, int c, int M[l][c])
+{
+    int i, j_ordana;
+
+    for (i = 0; i < l; i++)
+    {
+        fprintf(f, "%d", M[i][0]);
+        for (j_ordana = 1; j_ordana < c; j_ordana++)
+        {
+            fprintf(f, " %d", M[i][j_ordana]);
+        }
+        fprintf(f, "\n");
+    }
+    fprintf(f, "\n");
+}
+
+void **inicializaMat(int l, int c, int M[l][c])
+{
+    int i, j_ordana;
+
+    for (i = 0; i < l; i++)
+    {
+        for (j_ordana = 0; j_ordana < c; j_ordana++)
         {
             M[i][j_ordana] = 0;
         }
     }
 }
 
-void leMat(float **M, int t)
+// ???
+float **mallocaMat(float **M, int l, int c)
 {
-    int i, j_ordana;
+    int i;
 
-    printf("Informe os valores da matriz:\n");
-    for (i = 0; i < t; i++)
+    M = (float**)malloc(l * sizeof(float*));
+    for (i = 0; i < l; i++)
     {
-        for (j_ordana = 0; j_ordana < t; j_ordana++)
-        {
-            scanf("%i", &M[i][j_ordana]);
-        }
+        M[i] = (float*)malloc(c * sizeof(float));
     }
+
+    return M;
 }
 
-int main()
+/*
+void main()
 {
-    int l = 3;
-    int c = 3;
+    int i;
+    int l, c;
 
-    float **M = (int **)malloc(l * sizeof(int *));
+    printf("Informe o numero de linhas: ");
+    scanf(" %i", &l);
 
-    for (int i = 0; i < l; i++)
-    {
-        M[i] = (int *)malloc(c * sizeof(int));
-    }
+    printf("Informe o numero de colunas: ");
+    scanf(" %i", &c);
 
-    // M = (float **)malloc(3 * sizeof(float *));
+    float A[l][c], **B;
+    // printaMatEstatica(l, c, A);
+    // inicializaMat(l, c, A);
+    // printaMatEstatica(l, c, A);
 
-    int t = 3;
-
-    leMat(M, t);
-
-    return 0;
+    // mallocaMat(B, l, c);
+    // inicializaMat(l, c, A);
+    printaMatDinamica(l, c, B);
+    // inicializaMat(B, l, c);
+    // printaMat(B, l, c);
 }
 */
