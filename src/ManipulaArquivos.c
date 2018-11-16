@@ -8,7 +8,6 @@ int leConfig(FILE *f, char **pathTreino, char **pathTeste, char **pathEscrita, i
     int i = 0;
     int j = 0;
 
-
     /* Os três whiles se referem à leitura dos endereços
        de treino, teste e escrita, respectivamente */
 
@@ -20,6 +19,7 @@ int leConfig(FILE *f, char **pathTreino, char **pathTeste, char **pathEscrita, i
             (*pathTreino)[j] = '\0';
             break;
         }
+
         j++;
         *pathTreino = realloc(*pathTreino, (j + 1) * sizeof(char));
     }
@@ -33,6 +33,7 @@ int leConfig(FILE *f, char **pathTreino, char **pathTeste, char **pathEscrita, i
             (*pathTeste)[j] = '\0';
             break;
         }
+
         j++;
         *pathTeste = realloc(*pathTeste, (j + 1) * sizeof(char));
     }
@@ -46,6 +47,7 @@ int leConfig(FILE *f, char **pathTreino, char **pathTeste, char **pathEscrita, i
             (*pathEscrita)[j] = '\0';
             break;
         }
+
         j++;
         *pathEscrita = realloc(*pathEscrita, (j + 30) * sizeof(char));
     }
