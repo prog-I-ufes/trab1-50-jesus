@@ -12,7 +12,6 @@
 #include "include/Classificador.h"
 #include "include/ManipulaArquivos.h"
 
-// main de fato do trabalho
 int main()
 {
 
