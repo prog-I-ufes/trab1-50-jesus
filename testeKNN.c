@@ -38,7 +38,7 @@ int main()
     r = (float *)malloc(2 * sizeof(float));
 
     // Ex: abrindo config.txt (e printando resultados posteriormente)
-    // Libera vetores e fecha programa caso nao consiga abrir config
+    // Libera vetores e fecha programa caso não consiga abrir config
     fconfig = fopen("config.txt", "r");
     if (fconfig == NULL)
     {

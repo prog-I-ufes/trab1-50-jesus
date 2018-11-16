@@ -8,15 +8,14 @@
 #include <math.h>
 #include <string.h>
 #include "include/ManipulaVetores.h"
+#include "include/ManipulaMatrizes.h"
 #include "include/Distancias.h"
 #include "include/Classificador.h"
 #include "include/ManipulaArquivos.h"
 
 // Exemplo de uso de funções dos módulos
-// sei la joga alguma coisa ai meu consacred
 int main()
 {
-    // vou jogar dark souls 3 então
     int *tam;
     float *ordenadao;
     float *distC;
