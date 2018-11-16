@@ -205,7 +205,7 @@ int tudoIgualVet(float a[], int tam)
 // Elemento que mais ocorre em um vetor (retorna o 'primeiro' de maior ocorrência)
 float maioriaVet(float a[], int tam)
 {
-    int i, j;
+    int i;
     int ocorre = 0, maiorOcorrencia = 0;
     int moda = 0;
 

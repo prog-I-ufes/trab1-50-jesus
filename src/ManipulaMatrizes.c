@@ -17,7 +17,6 @@ void leMat(float **M, int l, int c)
     }
 }
 
-// Até duas casas decimais
 void printaMat(int l, int c, int M[l][c])
 {
     int i, j_ordana;
@@ -27,7 +26,7 @@ void printaMat(int l, int c, int M[l][c])
     {
         for (j_ordana = 0; j_ordana < c; j_ordana++)
         {
-            printf("%.2f ", M[i][j_ordana]);
+            printf("%i ", M[i][j_ordana]);
         }
         printf("\n");
     }
@@ -50,7 +49,7 @@ void fprintaMat(FILE *f, int l, int c, int M[l][c])
     fprintf(f, "\n");
 }
 
-void **inicializaMat(int l, int c, int M[l][c])
+int **inicializaMat(int l, int c, int M[l][c])
 {
     int i, j_ordana;
 
@@ -61,6 +60,8 @@ void **inicializaMat(int l, int c, int M[l][c])
             M[i][j_ordana] = 0;
         }
     }
+
+    return 0;
 }
 
 // ???
