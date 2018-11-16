@@ -55,4 +55,4 @@ dkms.conf
 .gitkeep
 
 # Predições geradas
-predicoes/*
+predicao*.txt
