@@ -1,7 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../include/ManipulaArquivos.h"
+#include "../include/Classificador.h"
 // #include "../include/Classificador.h"
+
+
+// adicionando funções inúteis que vamos remover posteriormente
+int arquivoVazio(FILE *f, int *k, char *d, float *r, char *pathTreino, char *pathTeste, char *pathEscrita)
+{
+    if (f == NULL)
+    {
+        printf("Nao foi possivel abrir o arquivo."); // merda não dá pra falar qual arquivo é
+        freeAll(k, d, r, pathTreino, pathTeste, pathEscrita);
+        fclose(f);
+        exit(1);
+    }
+
+    return 0;
+}
+
 
 int leConfig(FILE *f, char **pathTreino, char **pathTeste, char **pathEscrita, int **k, char **d, float **r)
 {

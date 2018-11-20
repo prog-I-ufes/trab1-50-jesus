@@ -22,10 +22,10 @@ int main()
     FILE *ftreino;
     FILE *fteste;
 
-    // Parâmetros do cálculo de distância (k vizinhos e r para Minkowski) e quantidade de parâmetros
+    // Parâmetros do cálculo de distância (k vizinhos e r para Minkowski) e quantidade de features
     int *k, qtdP;
-    float /* a[tam], b[tam], soma[tam], ordenadao[tam], distE, distM, distC, */ *r;
-    // Endereço do treino e teste e parâmetros do cálculo de distância (de Euclides, Minkowski ou Chebyshev)
+    float *r;
+    // Endereços de treino, teste e escrita e escolha de algoritmo para cálculo da distância (de Euclides, Minkowski ou Chebyshev)
     char *pathTreino, *pathTeste, *pathEscrita, *d;
 
     float **treino;
@@ -33,7 +33,6 @@ int main()
     int linhaTreino, colunaTreino, linhaTeste, colunaTeste;
 
     // Parâmetros de distância
-    // se pa rola uma função pra malocar
     pathTreino = (char *)malloc(sizeof(char));
     pathTeste = (char *)malloc(sizeof(char));
     pathEscrita = (char *)malloc(sizeof(char));
@@ -41,69 +40,17 @@ int main()
     d = (char *)malloc(2 * sizeof(char));
     r = (float *)malloc(2 * sizeof(float));
 
-    // Ex: abrindo config.txt (e printando resultados posteriormente)
-    // Libera vetores e fecha programa caso não consiga abrir config
+    // Libera vetores e fecha programa caso não consiga abrir o arquivo
     fconfig = fopen("config.txt", "r");
+    arquivoVazio(fconfig, k, d, r, pathTreino, pathTeste, pathEscrita);
 
-    // se pa rola uma função pra fazer essa verificação (nem quero ver o tanto de parâmetro)
-    if (fconfig == NULL)
-    {
-        printf("Nao foi possivel abrir o config.txt\n");
-        free(k);
-        free(r);
-        free(d);
-        free(pathTreino);
-        free(pathTeste);
-        free(pathEscrita);
-        exit(1);
-    }
-
-    // Lê config desejada e abre treino e teste
+    // Lê arquivo config e abre treino e teste
     qtdP = leConfig(fconfig, &pathTreino, &pathTeste, &pathEscrita, &k, &d, &r);
     ftreino = fopen(pathTreino, "r");
     fteste = fopen(pathTeste, "r");
 
-    if (ftreino == NULL)
-    {
-        printf("Nao foi possivel abrir o %s\n", pathTreino);
-
-        free(k);
-        free(r);
-        free(d);
-        free(pathTreino);
-        free(pathTeste);
-        free(pathEscrita);
-
-        if (fteste != NULL)
-        {
-            fclose(fteste);
-        }
-
-        fclose(fconfig);
-
-        exit(1);
-    }
-
-    if (fteste == NULL)
-    {
-        printf("Nao foi possivel abrir o %s\n", pathTeste);
-
-        free(k);
-        free(r);
-        free(d);
-        free(pathTreino);
-        free(pathTeste);
-        free(pathEscrita);
-
-        if (ftreino != NULL)
-        {
-            fclose(ftreino);
-        }
-
-        fclose(fconfig);
-
-        exit(1);
-    }
+    arquivoVazio(ftreino, k, d, r, pathTreino, pathTeste, pathEscrita);
+    arquivoVazio(fteste, k, d, r, pathTreino, pathTeste, pathEscrita);
 
     // Passa o conteúdo do treino e do teste para matriz
     treino = leDados(ftreino, &linhaTreino, &colunaTreino);
@@ -115,14 +62,8 @@ int main()
         predict(i + 1, pathEscrita, k[i], d[i], r[i], treino, teste, colunaTreino + 1, linhaTreino - 1, colunaTeste + 1, linhaTeste - 1);
     }
 
-    // free(all)
     // Libera vetores antes de fechar o programa
-    free(k);
-    free(r);
-    free(d);
-    free(pathTreino);
-    free(pathTeste);
-    free(pathEscrita);
+    freeAll(k, d, r, pathTreino, pathTeste, pathEscrita);
 
     for (int j = 0; j < linhaTreino; j++)
     {

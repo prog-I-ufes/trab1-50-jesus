@@ -1,10 +1,22 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-#include <math.h> // round()
+#include <math.h>
 #include "../include/Distancias.h"
 #include "../include/ManipulaVetores.h"
 #include "../include/ManipulaMatrizes.h"
 #include "../include/Classificador.h"
+
+// adicionando funções inúteis que vamos remover posteriormente
+void freeAll(int *k, char *d, float *r, char *pathTreino, char *pathTeste, char *pathEscrita)
+{
+    free(k);
+    free(d);
+    free(r);
+    free(pathTreino);
+    free(pathTeste);
+    free(pathEscrita);
+}
 
 void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rMink, float **treinoMat, float **testeMat, int colTreino, int linTreino, int colTeste, int linTeste)
 {
@@ -15,7 +27,7 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
 
     strcpy(pathAux, pathPredicoes);
 
-    char num[12];
+    char num[12]; //? pera q
 
     // Gera o path de escrita
     sprintf(num, "%d", predicoes);
@@ -29,7 +41,7 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
 
     float dists[linTreino];
     float rotulosTreino[linTreino];
-    float rotulosTreinoSORT[linTreino]; // PARA GERAR A MATRIZ DE CONFUSÃO
+    float rotulosTreinoSORT[linTreino]; // Para gerar a matriz de confusão
     float kPrimeirosRotulos[k];
     float kPrimeirasDists[k];
     float classificacaoOriginal[linTeste];
@@ -70,7 +82,7 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
                 distMinkowski(testeMat[i], treinoMat[j], colTeste - 1, rMink, &dists[j]);
             }
             // printf("\n");
-            // // printf("----- VETOR DE DISTANCIAS -----\n");
+            // printf("----- VETOR DE DISTANCIAS -----\n");
             // printaVet(dists, linTreino);
             for (j = 0; j < linTreino; j++)
             {
@@ -114,7 +126,7 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
                 distEuclid(testeMat[i], treinoMat[j], colTeste - 1, &dists[j]);
             }
             // printf("\n");
-            // // printf("----- VETOR DE DISTANCIAS -----\n");
+            // printf("----- VETOR DE DISTANCIAS -----\n");
             // printaVet(dists, linTreino);
             for (j = 0; j < linTreino; j++)
             {
@@ -158,7 +170,7 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
                 distChebyshev(testeMat[i], treinoMat[j], colTeste - 1, &dists[j]);
             }
             // printf("\n");
-            // // printf("----- VETOR DE DISTANCIAS ----\n");
+            // printf("----- VETOR DE DISTANCIAS ----\n");
             // printaVet(dists, linTreino);
             for (j = 0; j < linTreino; j++)
             {
@@ -191,8 +203,8 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
         break;
     }
 
-    /*Compara a nova classificação com a classificação original
-      e altera a matriz de confusão*/
+    /* Compara a nova classificação com a classificação original
+       e altera a matriz de confusão */
     for (i = 0; i < linTeste; i++)
     {
         if (novaClassificacao[i] == classificacaoOriginal[i])
@@ -210,10 +222,10 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
 
     fprintaMat(fpredicoes, tamConfusao, tamConfusao, matrizConfusao);
 
-    // Printa as novas classificações (o '-1' é por causa da bateria de testes e não está pronto já que eu só pego o primeiro dos k)
-    for (int s = 0; s < linTeste; s++)
+    // Printa as novas classificações (o '-1' é por causa da bateria de testes e não está pronto já que eu só pego o primeiro dos k) MAS TEM QUE ESTAR PRONTO ESSE CARALHO
+    for (i = 0; i < linTeste; i++)
     {
-        fprintf(fpredicoes, "%d\n", (int)(novaClassificacao[s] - 1));
+        fprintf(fpredicoes, "%d\n", (int)(novaClassificacao[i] - 1));
     }
 
     // Volta com o path original
