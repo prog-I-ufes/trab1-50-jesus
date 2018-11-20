@@ -65,17 +65,16 @@ int **inicializaMat(int l, int c, int M[l][c])
 }
 
 // ???
-float **mallocaMat(float **M, int l, int c)
+void mallocaMat(float ***M, int l, int c)
 {
     int i;
 
-    M = (float**)malloc(l * sizeof(float*));
+    *M = (float**)malloc(l * sizeof(float*));
     for (i = 0; i < l; i++)
     {
-        M[i] = (float*)malloc(c * sizeof(float));
+        *M[i] = (float*)malloc(c * sizeof(float));
     }
 
-    return M;
 }
 
 /*

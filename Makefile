@@ -1,4 +1,4 @@
-# BIN      := ./bin    vai ter pasta de executável ou não nessa mizera
+#? BIN      := ./bin    vai ter pasta de executável ou não nessa mizera
 OBJ      := ./obj
 INCLUDE  := ./include
 SRC      := ./src
