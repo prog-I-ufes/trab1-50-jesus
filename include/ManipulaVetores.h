@@ -1,3 +1,8 @@
+// Módulo com funções para manipulação de vetores
+
+#ifndef __MANIPULAVETORES_H
+#define __MANIPULAVETORES_H
+
 void somaElementosVet(float a[], int tam, float *somaElementos);
 void leVet(float *a, int tam);
 void printaVet(float a[], int tam);
@@ -14,3 +19,5 @@ void douBoaSort(float a[], float b[], int tam);
 int ocorrenciasVet(float a[], float n, int tam);
 int tudoIgualVet(float a[], int tam);
 float maioriaVet(float a[], int tam);
+
+#endif
