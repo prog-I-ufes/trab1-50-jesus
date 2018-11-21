@@ -40,7 +40,7 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
 
     float dists[linTreino];
     float rotulosTreino[linTreino];
-    float rotulosTreinoSORT[linTreino]; // Para gerar a matriz de confusão
+    // Para gerar a matriz de confusão
     float kPrimeirosRotulos[k];
     float kPrimeirasDists[k];
     float classificacaoOriginal[linTeste];
@@ -55,16 +55,13 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
     for (j = 0; j < linTreino; j++)
     {
         rotulosTreino[j] = treinoMat[j][colTreino - 1];
-        rotulosTreinoSORT[j] = treinoMat[j][colTreino - 1];
     }
 
-    boaSort(rotulosTreino, rotulosTreinoSORT, linTreino);
-
     // Número (em inteiro) de rótulos para gerar matriz de confusão
-    int tamConfusao = (int)rotulosTreinoSORT[linTreino - 1];
+    int nRotulos = maiorVet(rotulosTreino, linTreino);
 
-    int matrizConfusao[tamConfusao][tamConfusao];
-    inicializaMat(tamConfusao, tamConfusao, matrizConfusao);
+    int matrizConfusao[nRotulos][nRotulos];
+    inicializaMat(nRotulos, nRotulos, matrizConfusao);
 
     switch (tipoDist)
     {
@@ -157,7 +154,7 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
     float acc = acuracia(acertos, linTeste);
     fprintf(fpredicoes, "%.2f\n\n", acc);
 
-    fprintaMat(fpredicoes, tamConfusao, tamConfusao, matrizConfusao);
+    fprintaMat(fpredicoes, nRotulos, nRotulos, matrizConfusao);
 
     for (i = 0; i < linTeste; i++)
     {

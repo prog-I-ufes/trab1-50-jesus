@@ -88,7 +88,7 @@ int main()
 
     for (int i = 0; i < qtdP - 1; i++)
     {
-        predict(i + 1, pathEscrita, k[i], d[i], r[i], treino, teste, colunaTreino, linhaTreino, colunaTeste, linhaTeste);
+        predict(i + 1, pathEscrita, k[i], d[i], r[i], treino, teste, colunaTreino, linhaTreino - 1, colunaTeste, linhaTeste - 1);
     }
 
     // Libera vetores e fecha arquivos antes de fechar o programa

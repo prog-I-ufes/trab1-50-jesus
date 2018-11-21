@@ -4,7 +4,7 @@
 #define __MANIPULAVETORES_H
 
 void somaElementosVet(float a[], int tam, float *somaElementos);
-void printaVet(float a[], int tam);
+void printaVet(int a[], int tam);
 void somaVet(float a[], float b[], int tam, float *vetSoma);
 void subVet(float a[], float b[], int tam, float *vetSub);
 void prodVet(float a[], float b[], int tam, float *vetProd);
@@ -18,5 +18,6 @@ int ocorrenciasVet(float a[], float n, int tam);
 int tudoIgualVet(float a[], int tam);
 float maiorVet(float a[], int tam);
 float maioriaVet(float a[], int tam);
+float desempate(int nRotulos, float karalho, float rotulos[]);
 
 #endif

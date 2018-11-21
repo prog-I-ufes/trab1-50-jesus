@@ -13,6 +13,30 @@ void somaElementosVet(float a[], int tam, float *somaElementos)
     }
 }
 
+void printaVet(int a[], int tam)
+{
+    int i;
+
+    for (i = 0; i < tam; i++)
+    {
+        printf("%i\n", a[i]);
+    }
+
+    printf("\n");
+}
+
+void printafVet(float a[], int tam)
+{
+    int i;
+
+    for (i = 0; i < tam; i++)
+    {
+        printf("%.2f\n", a[i]);
+    }
+
+    printf("\n");
+}
+
 void somaVet(float a[], float b[], int tam, float *vetSoma)
 {
     int i;
@@ -129,6 +153,19 @@ void douBoaSort(float a[], float b[], int tam)
     }
 }
 
+
+int inicializaVet(int a[], int tam)
+{
+    int i;
+
+    for (i = 0; i < tam; i++)
+    {
+        a[i] = 0;
+    }
+
+    return 0;
+}
+
 // Quantas vezes um float ocorre no vetor
 int ocorrenciasVet(float a[], float n, int tam)
 {
@@ -179,6 +216,26 @@ float maiorVet(float a[], int tam)
     return maior;
 }
 
+float indiceMaiorVet(int a[], int tam)
+{
+    int i;
+    float maior, indiceMaior;
+
+    maior = a[0];
+    for (i = 0; i < tam; i++)
+    {
+        if (a[i] > maior)
+        {
+            maior = a[i];
+            indiceMaior = i;
+        }
+    }
+
+    // printf("%f, ", indiceMaior);
+
+    return indiceMaior + 1;
+}
+
 // Elemento que mais ocorre em um vetor (retorna o "primeiro" de maior ocorrência)
 float maioriaVet(float a[], int tam)
 {
@@ -206,4 +263,22 @@ float maioriaVet(float a[], int tam)
 
         return moda;
     }
+}
+
+float desempate(int nRotulos, float karalho, float rotulos[])
+{
+        int i, listaQtdRotulos[nRotulos];
+        inicializaVet(listaQtdRotulos, nRotulos);
+
+        for (i = 0; i < karalho; i++)
+        {
+            listaQtdRotulos[(int)(rotulos[i] - 1)]++;
+        }
+
+        // printafVet(rotulos, karalho);
+        puts("");
+        // printaVet(listaQtdRotulos, nRotulos);
+        puts("");
+        // printf("|%.2f|\n", indiceMaiorVet(listaQtdRotulos, nRotulos) - 1);
+        return indiceMaiorVet(listaQtdRotulos, nRotulos);
 }

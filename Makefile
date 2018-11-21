@@ -1,4 +1,4 @@
-#? BIN      := ./bin    vai ter pasta de executável ou não nessa mizera
+	#? BIN      := ./bin    vai ter pasta de executável ou não nessa mizera
 OBJ      := ./obj
 INCLUDE  := ./include
 SRC      := ./src
@@ -19,7 +19,7 @@ run:
 	./main.out
 
 val:
-	valgrind ./main.out
+	valgrind --leak-check=full -v ./main.out
 
 clean:
 	-rm $(OBJ)/*.o
