@@ -14,7 +14,7 @@ void quadradoVet(float a[], int tam, float *vetQuadrado);
 void expVet(float a[], int tam, float e, float *vetElevado);
 void copiaVet(float *dest, float source[], int tam);
 float maiorVet(float a[], int tam);
-void boaSort(float a[], int tam, float *ordenado);
+void boaSort(float a[], float *ordenado, int tam);
 void douBoaSort(float a[], float b[], int tam);
 int ocorrenciasVet(float a[], float n, int tam);
 int tudoIgualVet(float a[], int tam);

@@ -59,7 +59,7 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
         rotulosTreinoSORT[j] = treinoMat[j][colTreino - 1];
     }
 
-    boaSort(rotulosTreinoSORT, linTreino, rotulosTreinoSORT);
+    boaSort(rotulosTreino, rotulosTreinoSORT, linTreino);
 
     // Número (em inteiro) de rótulos para gerar matriz de confusão
     int tamConfusao = (int)rotulosTreinoSORT[linTreino - 1];

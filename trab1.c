@@ -42,15 +42,50 @@ int main()
 
     // Libera vetores e fecha programa caso não consiga abrir o arquivo
     fconfig = fopen("config.txt", "r");
-    arquivoVazio(fconfig, k, d, r, pathTreino, pathTeste, pathEscrita);
+    if (fconfig == NULL)
+    {
+        printf("Nao foi possivel abrir o config.txt\n");
 
-    // Lê arquivo config e abre treino e teste
+        freeAll(k, d, r, pathTreino, pathTeste, pathEscrita);
+
+        exit(1);
+    }
+
+    // Lê config desejada e abre treino e teste
     qtdP = leConfig(fconfig, &pathTreino, &pathTeste, &pathEscrita, &k, &d, &r);
     ftreino = fopen(pathTreino, "r");
     fteste = fopen(pathTeste, "r");
 
-    arquivoVazio(ftreino, k, d, r, pathTreino, pathTeste, pathEscrita);
-    arquivoVazio(fteste, k, d, r, pathTreino, pathTeste, pathEscrita);
+    if (ftreino == NULL)
+    {
+        printf("Nao foi possivel abrir o %s\n", pathTreino);
+        freeAll(k, d, r, pathTreino, pathTeste, pathEscrita);
+
+        if (fteste != NULL)
+        {
+            fclose(fteste);
+        }
+
+        fclose(fconfig);
+
+        exit(1);
+    }
+
+    if (fteste == NULL)
+    {
+        printf("Nao foi possivel abrir o %s\n", pathTeste);
+
+        freeAll(k, d, r, pathTreino, pathTeste, pathEscrita);
+
+        if (ftreino != NULL)
+        {
+            fclose(ftreino);
+        }
+
+        fclose(fconfig);
+
+        exit(1);
+    }
 
     // Passa o conteúdo do treino e do teste para matriz
     treino = leDados(ftreino, &linhaTreino, &colunaTreino);

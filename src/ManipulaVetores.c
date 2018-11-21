@@ -127,7 +127,7 @@ float maiorVet(float a[], int tam)
     return maior;
 }
 
-void boaSort(float a[], int tam, float *ordenado)
+void boaSort(float a[], float *ordenado, int tam)
 {
     int i = 0, j = 0;
     float aux;
@@ -146,7 +146,7 @@ void boaSort(float a[], int tam, float *ordenado)
     }
 }
 
-// Versão do boaSort para float (finge que é pra (dou)ble)
+// Versão do boaSort para float (finge que é pra (dou)ble) e que ordena B em relação a A
 void douBoaSort(float a[], float b[], int tam)
 {
     int i = 0, j = 0;
