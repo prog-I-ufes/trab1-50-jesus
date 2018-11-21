@@ -70,9 +70,9 @@ int leConfig(FILE *f, char **pathTreino, char **pathTeste, char **pathEscrita, i
         }
 
         // Alocação extra (2) por segurança
-        *k = realloc(*k, (2 + i) * sizeof(int));
-        *d = realloc(*d, (2 + i) * sizeof(char));
-        *r = realloc(*r, (2 + i) * sizeof(float));
+        *k = realloc(*k, (i + 2) * sizeof(int));
+        *d = realloc(*d, (i + 2) * sizeof(char));
+        *r = realloc(*r, (i + 2) * sizeof(float));
 
         i++;
     }
@@ -80,12 +80,12 @@ int leConfig(FILE *f, char **pathTreino, char **pathTeste, char **pathEscrita, i
     return i;
 }
 
-float **leDados(FILE *p, int *ln, int *cl)
+// Para ler os dados do arquivo .csv
+float **leDados(FILE *p, int *l, int *c)
 {
     char caractereAtual;
     float **matriz;
-    int k = 0;
-    int virgulas = 0;
+    int k = 0, features = 0;
     matriz = (float **)malloc(1 * sizeof(float *));
 
     while (!feof(p)) // Conta vírgulas
@@ -97,28 +97,28 @@ float **leDados(FILE *p, int *ln, int *cl)
         }
         else if (caractereAtual == ',')
         {
-            virgulas++;
+            features++;
         }
     }
+    features += 1; // Após a última vírgula na leitura do arquivo, ainda há uma feature
 
     rewind(p); // Volta para o começo do arquivo após contar todas as vírgulas
 
     // Passa arquivo para matriz
-    // Aqui, alocamos 'virgulas + 1' pois, após a última vírgula na leitura do arquivo, ainda há um número
     while (!feof(p))
     {
-        matriz[k] = (float *)malloc((virgulas + 1) * sizeof(float));
+        matriz[k] = (float *)malloc((features) * sizeof(float));
 
-        for (int j = 0; j < (virgulas + 1); j++)
+        for (int j = 0; j < (features); j++)
         {
             fscanf(p, "%f, ", &matriz[k][j]);
         }
 
         k++;
-        matriz = realloc(matriz, (1 + k) * sizeof(float *));
+        matriz = realloc(matriz, (k + 1) * sizeof(float *));
     }
 
-    *ln = k;        // Retorna linhas (k vizinhos)
-    *cl = virgulas; // Retorna colunas (cada vírgula é uma coluna) (cada k uma lágrima)
-    return matriz;  // Retorna matriz gerada
+    *l = k - 1;    // menos unzin        // Retorna linhas (k vizinhos)
+    *c = features; // Retorna colunas (cada vírgula é uma coluna) (cada k uma lágrima)
+    return matriz; // Retorna matriz gerada
 }
