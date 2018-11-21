@@ -5,14 +5,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-// tirando pq não precisa mesmo, include nem dá erro
-// #include <string.h>
-// #include "include/ManipulaVetores.h"
-// #include "include/Distancias.h"
 #include "include/Classificador.h"
 #include "include/ManipulaArquivos.h"
 
-// vai ter que rolar uma modularização meu consacrated
 /* além disso, meu parça, não quero ir na quinta pq não tem aula de eld,
    mas tinha que tirar umas duvidas do trabalho tipo sobre diretorios kkm */
 int main()
@@ -91,13 +86,12 @@ int main()
     treino = leDados(ftreino, &linhaTreino, &colunaTreino);
     teste = leDados(fteste, &linhaTeste, &colunaTeste);
 
-    //? acho que isso pode ir módulo do classificador. talvez
     for (int i = 0; i < qtdP - 1; i++)
     {
-        predict(i + 1, pathEscrita, k[i], d[i], r[i], treino, teste, colunaTreino + 1, linhaTreino - 1, colunaTeste + 1, linhaTeste - 1);
+        predict(i + 1, pathEscrita, k[i], d[i], r[i], treino, teste, colunaTreino, linhaTreino, colunaTeste, linhaTeste);
     }
 
-    // Libera vetores antes de fechar o programa
+    // Libera vetores e fecha arquivos antes de fechar o programa
     freeAll(k, d, r, pathTreino, pathTeste, pathEscrita);
 
     for (int j = 0; j < linhaTreino; j++)

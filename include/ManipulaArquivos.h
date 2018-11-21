@@ -4,6 +4,6 @@
 #define __MANIPULAARQUIVOS_H
 
 int leConfig(FILE *f, char **pathTreino, char **pathTeste, char **pathEscrita, int *k[], char *d[], float *r[]);
-float** leDados(FILE *p, int *ln, int *cl);
+float** leDados(FILE *p, int *l, int *c);
 
 #endif

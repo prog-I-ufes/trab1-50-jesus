@@ -1,7 +1,6 @@
 #include "../include/ManipulaVetores.h"
 #include <stdio.h>
 #include <math.h>
-// #include <string.h>  o t i m i z a ç ã o
 
 // Soma todos os elementos de um vetor entre si
 void somaElementosVet(float a[], int tam, float *somaElementos)
@@ -12,30 +11,6 @@ void somaElementosVet(float a[], int tam, float *somaElementos)
     {
         *somaElementos += a[i];
     }
-}
-
-void leVet(float *a, int tam)
-{
-    int i;
-
-    for (i = 0; i < tam; i++)
-    {
-        scanf("%f", &a[i]);
-    }
-
-    printf("\n");
-}
-
-void printaVet(float a[], int tam)
-{
-    int i;
-
-    for (i = 0; i < tam; i++)
-    {
-        printf("Posicao %d: %.2f\n", i, a[i]);
-    }
-
-    printf("\n");
 }
 
 void somaVet(float a[], float b[], int tam, float *vetSoma)
@@ -79,6 +54,16 @@ void absVet(float a[], int tam, float *vetAbs)
     }
 }
 
+void expVet(float a[], int tam, float e, float *vetElevado)
+{
+    int i;
+
+    for (i = 0; i < tam; i++)
+    {
+        vetElevado[i] = powf(a[i], e);
+    }
+}
+
 // Caso particular de expVet
 void quadradoVet(float a[], int tam, float *vetQuadrado)
 {
@@ -90,16 +75,6 @@ void quadradoVet(float a[], int tam, float *vetQuadrado)
     }
 }
 
-void expVet(float a[], int tam, float e, float *vetElevado)
-{
-    int i;
-
-    for (i = 0; i < tam; i++)
-    {
-        vetElevado[i] = powf(a[i], e);
-    }
-}
-
 void copiaVet(float *dest, float source[], int tam)
 {
     int i;
@@ -108,23 +83,6 @@ void copiaVet(float *dest, float source[], int tam)
     {
         dest[i] = source[i];
     }
-}
-
-float maiorVet(float a[], int tam)
-{
-    int i;
-    float maior;
-
-    maior = a[0];
-    for (i = 0; i < tam; i++)
-    {
-        if (a[i] > maior)
-        {
-            maior = a[i];
-        }
-    }
-
-    return maior;
 }
 
 void boaSort(float a[], float *ordenado, int tam)
@@ -147,6 +105,7 @@ void boaSort(float a[], float *ordenado, int tam)
 }
 
 // Versão do boaSort para float (finge que é pra (dou)ble) e que ordena B em relação a A
+// (Isto é útil na ordenação dos rótulos com as distâncias)
 void douBoaSort(float a[], float b[], int tam)
 {
     int i = 0, j = 0;
@@ -202,7 +161,25 @@ int tudoIgualVet(float a[], int tam)
     return 1;
 }
 
-// Elemento que mais ocorre em um vetor (retorna o 'primeiro' de maior ocorrência)
+// Maior elemento do vetor
+float maiorVet(float a[], int tam)
+{
+    int i;
+    float maior;
+
+    maior = a[0];
+    for (i = 0; i < tam; i++)
+    {
+        if (a[i] > maior)
+        {
+            maior = a[i];
+        }
+    }
+
+    return maior;
+}
+
+// Elemento que mais ocorre em um vetor (retorna o "primeiro" de maior ocorrência)
 float maioriaVet(float a[], int tam)
 {
     int i;
