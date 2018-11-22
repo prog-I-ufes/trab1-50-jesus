@@ -18,6 +18,5 @@ int ocorrenciasVet(float a[], float n, int tam);
 int tudoIgualVet(float a[], int tam);
 float maiorVet(float a[], int tam);
 float maioriaVet(float a[], int tam);
-float desempate(int nRotulos, float karalho, float rotulos[]);
 
 #endif

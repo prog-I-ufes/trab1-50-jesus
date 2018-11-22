@@ -42,7 +42,7 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
     float rotulosTreino[linTreino];
     // Para gerar a matriz de confusão
     float kPrimeirosRotulos[k];
-    float kPrimeirasDists[k];
+    //float kPrimeirasDists[k];
     float classificacaoOriginal[linTeste];
     float novaClassificacao[linTeste];
     float acertos = 0;
@@ -82,8 +82,9 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
             for (j = 0; j < k; j++)
             {
                 kPrimeirosRotulos[j] = rotulosTreino[j];
-                kPrimeirasDists[j] = dists[j];
+                //kPrimeirasDists[j] = dists[j];
             }
+            //printf("||%d||\n", i+1);
             novaClassificacao[i] = maioriaVet(kPrimeirosRotulos, k);
 
         }
@@ -106,8 +107,9 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
             for (j = 0; j < k; j++)
             {
                 kPrimeirosRotulos[j] = rotulosTreino[j];
-                kPrimeirasDists[j] = dists[j];
+                //kPrimeirasDists[j] = dists[j];
             }
+            //printf("||%d||\n", i+1);
             novaClassificacao[i] = maioriaVet(kPrimeirosRotulos, k);
         }
         break;
@@ -130,8 +132,9 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
             for (j = 0; j < k; j++)
             {
                 kPrimeirosRotulos[j] = rotulosTreino[j];
-                kPrimeirasDists[j] = dists[j];
+                //kPrimeirasDists[j] = dists[j];
             }
+            //printf("||%d||\n", i+1);
             novaClassificacao[i] = maioriaVet(kPrimeirosRotulos, k);
         }
         break;
