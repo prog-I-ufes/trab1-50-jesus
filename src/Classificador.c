@@ -78,14 +78,16 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
                 rotulosTreino[j] = treinoMat[j][colTreino - 1];
             }
             douBoaSort(dists, rotulosTreino, linTreino);
-
+            //fprintf(fpredicoes, "<Linha %d> ", i + 1);
             for (j = 0; j < k; j++)
             {
                 kPrimeirosRotulos[j] = rotulosTreino[j];
                 //kPrimeirasDists[j] = dists[j];
+                //fprintf(fpredicoes, " |%.2f| ", kPrimeirosRotulos[j] - 1);
             }
             //printf("||%d||\n", i+1);
             novaClassificacao[i] = maioriaVet(kPrimeirosRotulos, k);
+            //fprintf(fpredicoes, "Nova class: %.2f\n", novaClassificacao[i] - 1);
 
         }
         break;
@@ -103,14 +105,16 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
                 rotulosTreino[j] = treinoMat[j][colTreino - 1];
             }
             douBoaSort(dists, rotulosTreino, linTreino);
-
+            //fprintf(fpredicoes, "<Linha %d> ", i + 1);
             for (j = 0; j < k; j++)
             {
                 kPrimeirosRotulos[j] = rotulosTreino[j];
                 //kPrimeirasDists[j] = dists[j];
+                //fprintf(fpredicoes, " |%.2f| ", kPrimeirosRotulos[j] - 1);
             }
             //printf("||%d||\n", i+1);
             novaClassificacao[i] = maioriaVet(kPrimeirosRotulos, k);
+            //fprintf(fpredicoes, "Nova class: %.2f\n", novaClassificacao[i] - 1);
         }
         break;
 
@@ -128,14 +132,16 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
             }
 
             douBoaSort(dists, rotulosTreino, linTreino);
-
+            //fprintf(fpredicoes, "<Linha %d> ", i + 1);
             for (j = 0; j < k; j++)
             {
                 kPrimeirosRotulos[j] = rotulosTreino[j];
                 //kPrimeirasDists[j] = dists[j];
+                //fprintf(fpredicoes, " |%.2f| ", kPrimeirosRotulos[j] - 1);
             }
             //printf("||%d||\n", i+1);
             novaClassificacao[i] = maioriaVet(kPrimeirosRotulos, k);
+            //fprintf(fpredicoes, "Nova class: %.2f\n", novaClassificacao[i] - 1);
         }
         break;
     }
@@ -165,7 +171,7 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
     }
 
     // Volta com o path original
-    printf("%s\n", pathPredicoes);
+    printf("O arquivo (%s) foi escrito\n", pathPredicoes);
     strcpy(pathPredicoes, pathAux);
 
     fclose(fpredicoes);
