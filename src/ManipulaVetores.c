@@ -219,7 +219,7 @@ float maiorVet(float a[], int tam)
 float indiceMaiorVet(int a[], int tam)
 {
     int i;
-    float maior, indiceMaior;
+    float maior, indiceMaior = 0;
 
     maior = a[0];
     for (i = 0; i < tam; i++)
@@ -276,9 +276,9 @@ float desempate(int nRotulos, float karalho, float rotulos[])
         }
 
         // printafVet(rotulos, karalho);
-        puts("");
+        //puts("");
         // printaVet(listaQtdRotulos, nRotulos);
-        puts("");
+        //puts("");
         // printf("|%.2f|\n", indiceMaiorVet(listaQtdRotulos, nRotulos) - 1);
         return indiceMaiorVet(listaQtdRotulos, nRotulos);
 }
