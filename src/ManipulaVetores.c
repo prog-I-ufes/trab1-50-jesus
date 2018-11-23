@@ -74,7 +74,7 @@ void absVet(float a[], int tam, float *vetAbs)
 
     for (i = 0; i < tam; i++)
     {
-        vetAbs[i] = fabs(a[i]);
+        vetAbs[i] = sqrt(a[i] * a[i]);
     }
 }
 
@@ -239,6 +239,10 @@ float maioriaVet(float a[], int tam)
             {
                 moda = a[i];
                 maiorOcorrencia = ocorre;
+            }else if (ocorre == maiorOcorrencia){
+                if(moda > a[i]){
+                    moda = a[i];
+                }
             }
         }
 

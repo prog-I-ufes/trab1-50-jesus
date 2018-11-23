@@ -165,10 +165,11 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
 
     fprintaMat(fpredicoes, nRotulos, nRotulos, matrizConfusao);
 
-    for (i = 0; i < linTeste; i++)
+    for (i = 0; i < linTeste - 1; i++)
     {
         fprintf(fpredicoes, "%d\n", (int)(novaClassificacao[i] - 1));
     }
+    fprintf(fpredicoes, "%d", (int)(novaClassificacao[linTeste - 1] - 1));
 
     // Volta com o path original
     printf("O arquivo (%s) foi escrito\n", pathPredicoes);
