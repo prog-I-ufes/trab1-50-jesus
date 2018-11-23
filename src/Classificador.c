@@ -31,7 +31,7 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
 
     // Gera o path de escrita
     sprintf(num, "%d", predicoes);
-    strcat(pathPredicoes, "predicao-"); //? é resultados_ ou predicao_ ???
+    strcat(pathPredicoes, "predicao_"); //? é resultados_ ou predicao_ ???
     strcat(pathPredicoes, num);
     strcat(pathPredicoes, ".txt");
 

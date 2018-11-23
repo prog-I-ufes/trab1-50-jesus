@@ -76,7 +76,7 @@ void absVet(float a[], int tam, float *vetAbs)
     {
         if (vetAbs[i] < 0) // p e r f o r m a n c e
         {
-            vetAbs[i] = sqrt(a[i] * a[i]);
+            vetAbs[i] = fabs(a[i]);
         }
     }
 }
