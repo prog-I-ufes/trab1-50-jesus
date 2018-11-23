@@ -54,12 +54,16 @@ int main()
     if (ftreino == NULL)
     {
         printf("Nao foi possivel abrir o %s\n", pathTreino);
-        freeAll(k, d, r, pathTreino, pathTeste, pathEscrita);
 
         if (fteste != NULL)
         {
             fclose(fteste);
+        }else
+        {
+            printf("Nao foi possivel abrir o %s\n", pathTeste);
         }
+
+        freeAll(k, d, r, pathTreino, pathTeste, pathEscrita);
 
         fclose(fconfig);
 
@@ -70,12 +74,15 @@ int main()
     {
         printf("Nao foi possivel abrir o %s\n", pathTeste);
 
-        freeAll(k, d, r, pathTreino, pathTeste, pathEscrita);
-
         if (ftreino != NULL)
         {
             fclose(ftreino);
+        }else
+        {
+            printf("Nao foi possivel abrir o %s\n", pathTreino);
         }
+
+        freeAll(k, d, r, pathTreino, pathTeste, pathEscrita);
 
         fclose(fconfig);
 
