@@ -16,6 +16,9 @@ all:
 run:
 	./trab1
 
+time:
+	time make run
+
 val:
 	valgrind --leak-check=full -v ./trab1
 

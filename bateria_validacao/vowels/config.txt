@@ -1,5 +1,5 @@
-/home/<USER>/bateria_validacao/vowels/dataset/vowels_treino.csv
-/home/<USER>/bateria_validacao/vowels/dataset/vowels_teste.csv
+dataset/vowels_treino.csv
+dataset/vowels_teste.csv
 predicoes/
 11, C
 13, M, 0.5
