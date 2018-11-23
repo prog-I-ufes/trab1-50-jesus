@@ -74,7 +74,10 @@ void absVet(float a[], int tam, float *vetAbs)
 
     for (i = 0; i < tam; i++)
     {
-        vetAbs[i] = sqrt(a[i] * a[i]);
+        if (vetAbs[i] < 0) // p e r f o r m a n c e
+        {
+            vetAbs[i] = sqrt(a[i] * a[i]);
+        }
     }
 }
 
@@ -249,5 +252,3 @@ float maioriaVet(float a[], int tam)
         return moda;
     }
 }
-
-
