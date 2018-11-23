@@ -1,7 +1,7 @@
-dataset/vowels_treino.csv
-dataset/vowels_teste.csv
+/home/2018103810/bateria_validacao/vowels/dataset/vowels_treino.csv
+/home/2018103810/bateria_validacao/vowels/dataset/vowels_teste.csv
 predicoes/
-11, C
+13, C
 13, M, 0.5
 13, E
 15, E
