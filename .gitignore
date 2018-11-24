@@ -56,3 +56,6 @@ dkms.conf
 
 # Predições geradas
 predicao*.txt
+
+# config
+config.txt
