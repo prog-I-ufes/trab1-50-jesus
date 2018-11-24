@@ -54,8 +54,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-# Predições geradas
+# Arquivos do classificador
 predicao*.txt
-
-# config
 config.txt

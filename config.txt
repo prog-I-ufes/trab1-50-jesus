@@ -1,5 +1,5 @@
-bateria_validacao/vowels/dataset/vowels_treino.csv
-bateria_validacao/vowels/dataset/vowels_teste.csv
+home/<USER>/bateria_validacao/iris/dataset/iris_treino.csv
+home/<USER>/bateria_validacao/iris/dataset/iris_teste.csv
 predicoes/
 13, C
 13, M, 0.5

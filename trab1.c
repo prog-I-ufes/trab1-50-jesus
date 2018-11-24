@@ -8,8 +8,6 @@
 #include "include/Classificador.h"
 #include "include/ManipulaArquivos.h"
 
-/* além disso, meu parça, não quero ir na quinta pq não tem aula de eld,
-   mas tinha que tirar umas duvidas do trabalho tipo sobre diretorios kkm */
 int main()
 {
     // Variáveis para o config.txt
@@ -54,16 +52,16 @@ int main()
     if (ftreino == NULL)
     {
         printf("Nao foi possivel abrir o %s\n", pathTreino);
+        freeAll(k, d, r, pathTreino, pathTeste, pathEscrita);
 
         if (fteste != NULL)
         {
             fclose(fteste);
-        }else
+        }
+        else
         {
             printf("Nao foi possivel abrir o %s\n", pathTeste);
         }
-
-        freeAll(k, d, r, pathTreino, pathTeste, pathEscrita);
 
         fclose(fconfig);
 
@@ -74,15 +72,16 @@ int main()
     {
         printf("Nao foi possivel abrir o %s\n", pathTeste);
 
+        freeAll(k, d, r, pathTreino, pathTeste, pathEscrita);
+
         if (ftreino != NULL)
         {
             fclose(ftreino);
-        }else
+        }
+        else
         {
             printf("Nao foi possivel abrir o %s\n", pathTreino);
         }
-
-        freeAll(k, d, r, pathTreino, pathTeste, pathEscrita);
 
         fclose(fconfig);
 
@@ -95,7 +94,7 @@ int main()
 
     for (int i = 0; i < qtdP - 1; i++)
     {
-        predict(i + 1, pathEscrita, k[i], d[i], r[i], treino, teste, colunaTreino, linhaTreino - 1, colunaTeste, linhaTeste - 1);
+        predict(i + 1, pathEscrita, k[i], d[i], r[i], treino, teste, colunaTreino, linhaTreino, colunaTeste, linhaTeste);
     }
 
     // Libera vetores e fecha arquivos antes de fechar o programa

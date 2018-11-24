@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <math.h>
 #include "../include/Distancias.h"
 #include "../include/ManipulaVetores.h"
 #include "../include/ManipulaMatrizes.h"
@@ -21,43 +20,44 @@ void freeAll(int *k, char *d, float *r, char *pathTreino, char *pathTeste, char 
 void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rMink, float **treinoMat, float **testeMat, int colTreino, int linTreino, int colTeste, int linTeste)
 {
     int i, j;
+    // Para acessar posições corretamente
+    linTreino -= 1, colTreino -= 1, linTeste -= 1, colTeste -= 1;
 
     int lenPathPredicoes = strlen(pathPredicoes);
     char pathAux[lenPathPredicoes];
 
     strcpy(pathAux, pathPredicoes);
 
-    char num[12]; //? pera q
+    char num[12]; // Vetor capaz de acomodar o maior int
 
     // Gera o path de escrita
     sprintf(num, "%d", predicoes);
-    strcat(pathPredicoes, "predicao_"); //? é resultados_ ou predicao_ ???
+    strcat(pathPredicoes, "predicao_");
     strcat(pathPredicoes, num);
     strcat(pathPredicoes, ".txt");
 
     FILE *fpredicoes;
     fpredicoes = fopen(pathPredicoes, "w");
 
+    // Para gerar a matriz de confusão
     float dists[linTreino];
     float rotulosTreino[linTreino];
-    // Para gerar a matriz de confusão
     float kPrimeirosRotulos[k];
-    //float kPrimeirasDists[k];
     float classificacaoOriginal[linTeste];
     float novaClassificacao[linTeste];
     float acertos = 0;
 
     for (i = 0; i < linTeste; i++)
     {
-        classificacaoOriginal[i] = testeMat[i][colTeste - 1];
+        classificacaoOriginal[i] = testeMat[i][colTeste];
     }
 
     for (j = 0; j < linTreino; j++)
     {
-        rotulosTreino[j] = treinoMat[j][colTreino - 1];
+        rotulosTreino[j] = treinoMat[j][colTreino];
     }
 
-    // Número (em inteiro) de rótulos para gerar matriz de confusão
+    // Número de rótulos para gerar matriz de confusão
     int nRotulos = maiorVet(rotulosTreino, linTreino);
 
     int matrizConfusao[nRotulos][nRotulos];
@@ -70,24 +70,22 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
         {
             for (j = 0; j < linTreino; j++)
             {
-                distMinkowski(testeMat[i], treinoMat[j], colTeste - 1, rMink, &dists[j]);
+                distMinkowski(testeMat[i], treinoMat[j], colTeste, rMink, &dists[j]);
             }
 
             for (j = 0; j < linTreino; j++)
             {
-                rotulosTreino[j] = treinoMat[j][colTreino - 1];
+                rotulosTreino[j] = treinoMat[j][colTreino];
             }
+
             douBoaSort(dists, rotulosTreino, linTreino);
-            //fprintf(fpredicoes, "<Linha %d> ", i + 1);
+
             for (j = 0; j < k; j++)
             {
                 kPrimeirosRotulos[j] = rotulosTreino[j];
-                //kPrimeirasDists[j] = dists[j];
-                //fprintf(fpredicoes, " |%.2f| ", kPrimeirosRotulos[j] - 1);
             }
-            //printf("||%d||\n", i+1);
+
             novaClassificacao[i] = maioriaVet(kPrimeirosRotulos, k);
-            //fprintf(fpredicoes, "Nova class: %.2f\n", novaClassificacao[i] - 1);
 
         }
         break;
@@ -97,24 +95,22 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
         {
             for (j = 0; j < linTreino; j++)
             {
-                distEuclid(testeMat[i], treinoMat[j], colTeste - 1, &dists[j]);
+                distEuclid(testeMat[i], treinoMat[j], colTeste, &dists[j]);
             }
 
             for (j = 0; j < linTreino; j++)
             {
-                rotulosTreino[j] = treinoMat[j][colTreino - 1];
+                rotulosTreino[j] = treinoMat[j][colTreino];
             }
+
             douBoaSort(dists, rotulosTreino, linTreino);
-            //fprintf(fpredicoes, "<Linha %d> ", i + 1);
+
             for (j = 0; j < k; j++)
             {
                 kPrimeirosRotulos[j] = rotulosTreino[j];
-                //kPrimeirasDists[j] = dists[j];
-                //fprintf(fpredicoes, " |%.2f| ", kPrimeirosRotulos[j] - 1);
             }
-            //printf("||%d||\n", i+1);
+
             novaClassificacao[i] = maioriaVet(kPrimeirosRotulos, k);
-            //fprintf(fpredicoes, "Nova class: %.2f\n", novaClassificacao[i] - 1);
         }
         break;
 
@@ -123,25 +119,22 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
         {
             for (j = 0; j < linTreino; j++)
             {
-                distChebyshev(testeMat[i], treinoMat[j], colTeste - 1, &dists[j]);
+                distChebyshev(testeMat[i], treinoMat[j], colTeste, &dists[j]);
             }
 
             for (j = 0; j < linTreino; j++)
             {
-                rotulosTreino[j] = treinoMat[j][colTreino - 1];
+                rotulosTreino[j] = treinoMat[j][colTreino];
             }
 
             douBoaSort(dists, rotulosTreino, linTreino);
-            //fprintf(fpredicoes, "<Linha %d> ", i + 1);
+
             for (j = 0; j < k; j++)
             {
                 kPrimeirosRotulos[j] = rotulosTreino[j];
-                //kPrimeirasDists[j] = dists[j];
-                //fprintf(fpredicoes, " |%.2f| ", kPrimeirosRotulos[j] - 1);
             }
-            //printf("||%d||\n", i+1);
+
             novaClassificacao[i] = maioriaVet(kPrimeirosRotulos, k);
-            //fprintf(fpredicoes, "Nova class: %.2f\n", novaClassificacao[i] - 1);
         }
         break;
     }
@@ -169,7 +162,6 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
     {
         fprintf(fpredicoes, "%d\n", (int)(novaClassificacao[i] - 1));
     }
-    //fprintf(fpredicoes, "%d", (int)(novaClassificacao[linTeste - 1] - 1));
 
     // Volta com o path original
     printf("O arquivo (%s) foi escrito\n", pathPredicoes);
@@ -185,10 +177,4 @@ float acuracia(float acertos, float total)
     acc = acertos / total;
 
     return acc;
-}
-
-//?
-void round2(float *n)
-{
-    *n = (round(*n * 100)) / 100;
 }
