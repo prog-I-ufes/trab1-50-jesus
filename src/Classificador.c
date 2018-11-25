@@ -87,6 +87,14 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
 
             novaClassificacao[i] = maioriaVet(kPrimeirosRotulos, k);
 
+            //Exibe os k menores rotulos junto com a nova classificação de uma linha do teste
+
+            /*fprintf(fpredicoes, "<Linha %d> - ", i+1);
+            for(int m = 0; m < k; m++){
+                fprintf(fpredicoes, " |%.2f| ", kPrimeirosRotulos[m] - 1);
+            }
+            fprintf(fpredicoes," - <Novo rotulo = %.2f>\n", novaClassificacao[i] - 1);*/
+
         }
         break;
 
@@ -111,6 +119,14 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
             }
 
             novaClassificacao[i] = maioriaVet(kPrimeirosRotulos, k);
+
+            //Exibe os k menores rotulos junto com a nova classificação de uma linha do teste
+
+            /*fprintf(fpredicoes, "<Linha %d> - ", i+1);
+            for(int m = 0; m < k; m++){
+                fprintf(fpredicoes, " |%.2f| ", kPrimeirosRotulos[m] - 1);
+            }
+            fprintf(fpredicoes," - <Novo rotulo = %.2f>\n", novaClassificacao[i] - 1);*/
         }
         break;
 
@@ -135,6 +151,14 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
             }
 
             novaClassificacao[i] = maioriaVet(kPrimeirosRotulos, k);
+
+            //Exibe os k menores rotulos junto com a nova classificação de uma linha do teste
+
+            /*fprintf(fpredicoes, "<Linha %d> - ", i+1);
+            for(int m = 0; m < k; m++){
+                fprintf(fpredicoes, " |%.2f| ", kPrimeirosRotulos[m] - 1);
+            }
+            fprintf(fpredicoes," - <Novo rotulo = %.2f>\n", novaClassificacao[i] - 1);*/
         }
         break;
     }
