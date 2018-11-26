@@ -1,7 +1,7 @@
 OBJ      := ./obj
 INCLUDE  := ./include
 SRC      := ./src
-CFLAGS   := -Wall -g
+CFLAGS   := -Wall -g -O2
 
 all:
 	gcc -c $(CFLAGS) "$(SRC)/Distancias.c" -o "$(OBJ)/Distancias.o"
