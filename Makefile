@@ -1,7 +1,7 @@
 OBJ      := obj
 SRC      := src
 INC      := include
-CFLAGS   := -g -w -O3 -march=native -ftree-loop-vectorize -pipe -flto -Wall
+CFLAGS   := -g -w -O3 -march=native -ftree-loop-vectorize -pipe
 # -Os (parece ser mais lenta que O2 que por sua vez é mais lenta que O3) -Ofast (It also enables optimizations that are not valid for all standard-compliant programs. It turns on -ffast-math) (aaa)
 # The first and most important option is -march. This tells the compiler what code it should produce for the system's processor architecture (or arch); it tells GCC that it should produce code for a certain kind of CPU.
 # -flto and various other flags can be used to switch on link-time optimization (LTO). This can result in improved performance and smaller code, but may interfere with debugging. It may also reveal conformance issues in the source code that were previously hidden by separate compilations.
@@ -11,7 +11,6 @@ CFLAGS   := -g -w -O3 -march=native -ftree-loop-vectorize -pipe -flto -Wall
 
 
 all: main
-#	mkdir -p obj
 
 main: $(OBJ)/Distancias.o $(OBJ)/ManipulaVetores.o $(OBJ)/ManipulaMatrizes.o $(OBJ)/ManipulaArquivos.o $(OBJ)/Classificador.o $(OBJ)/trab1.o
 	gcc $(OBJ)/*.o -o trab1 -lm $(CFLAGS)
@@ -37,6 +36,9 @@ $(OBJ)/trab1.o: trab1.c
 
 run:
 	./trab1
+
+time:
+	time ./trab1
 
 val:
 	valgrind --leak-check=full -v ./trab1
