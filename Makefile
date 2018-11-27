@@ -1,7 +1,8 @@
 OBJ      := obj
 SRC      := src
 INC      := include
-CFLAGS   := -Wall -g -O2 -w
+CFLAGS   := -g -w -Os -march=native -ftree-loop-vectorize -pipe -flto -Wall
+# -Os -Ofast
 
 all: main
 
