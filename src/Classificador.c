@@ -85,9 +85,10 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
                 kPrimeirosRotulos[j] = rotulosTreino[j];
             }
 
-            novaClassificacao[i] = maioriaVet(kPrimeirosRotulos, k);
+            novaClassificacao[i] = maioriaVet(kPrimeirosRotulos, k); // Classifica e desempata
 
-            //Exibe os k menores rotulos junto com a nova classificação de uma linha do teste
+            /* (Comentário deixado propositalmente na entrega)
+               Exibe os k menores rótulos junto com a nova classificação de uma linha do teste */
 
             /*fprintf(fpredicoes, "<Linha %d> - ", i+1);
             for(int m = 0; m < k; m++){
@@ -118,9 +119,10 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
                 kPrimeirosRotulos[j] = rotulosTreino[j];
             }
 
-            novaClassificacao[i] = maioriaVet(kPrimeirosRotulos, k);
+            novaClassificacao[i] = maioriaVet(kPrimeirosRotulos, k); // Classifica e desempata
 
-            //Exibe os k menores rotulos junto com a nova classificação de uma linha do teste
+            /* (Comentário deixado propositalmente na entrega)
+               Exibe os k menores rótulos junto com a nova classificação de uma linha do teste */
 
             /*fprintf(fpredicoes, "<Linha %d> - ", i+1);
             for(int m = 0; m < k; m++){
@@ -150,9 +152,10 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
                 kPrimeirosRotulos[j] = rotulosTreino[j];
             }
 
-            novaClassificacao[i] = maioriaVet(kPrimeirosRotulos, k);
+            novaClassificacao[i] = maioriaVet(kPrimeirosRotulos, k); // Classifica e desempata
 
-            //Exibe os k menores rotulos junto com a nova classificação de uma linha do teste
+            /* (Comentário deixado propositalmente na entrega)
+               Exibe os k menores rótulos junto com a nova classificação de uma linha do teste */
 
             /*fprintf(fpredicoes, "<Linha %d> - ", i+1);
             for(int m = 0; m < k; m++){
@@ -187,7 +190,7 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
         fprintf(fpredicoes, "%d\n", (int)(novaClassificacao[i] - 1));
     }
 
-    // Volta com o path original
+    // Volta com o path original ""
     printf("O arquivo (%s) foi escrito\n", pathPredicoes);
     strcpy(pathPredicoes, pathAux);
 
