@@ -14,7 +14,7 @@ all: main
 #	mkdir -p obj
 
 main: $(OBJ)/Distancias.o $(OBJ)/ManipulaVetores.o $(OBJ)/ManipulaMatrizes.o $(OBJ)/ManipulaArquivos.o $(OBJ)/Classificador.o $(OBJ)/trab1.o
-	gcc $(OBJ)/*.o -o trab1 -lm
+	gcc $(OBJ)/*.o -o trab1 -lm $(CFLAGS)
 
 $(OBJ)/Distancias.o: $(SRC)/Distancias.c $(INC)/Distancias.h
 	gcc -c $(CFLAGS) "$(SRC)/Distancias.c" -o "$(OBJ)/Distancias.o"
