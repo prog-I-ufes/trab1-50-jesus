@@ -62,10 +62,7 @@ void absVet(float a[], int tam, float *vetAbs)
 
     for (i = 0; i < tam; i++)
     {
-        // if (vetAbs[i] < 0) // p e r f o r m a n c e  (ou não)
-        // {
-            vetAbs[i] = fabs(a[i]);
-        // }
+        vetAbs[i] = fabs(a[i]);
     }
 }
 
@@ -144,7 +141,6 @@ void douBoaSort(float a[], float b[], int tam)
     }
 }
 
-
 int inicializaVet(int a[], int tam)
 {
     int i;
@@ -207,7 +203,6 @@ float maiorVet(float a[], int tam)
     return maior;
 }
 
-
 // Elemento que mais ocorre em um vetor (retorna o menor de maior ocorrência)
 float maioriaVet(float a[], int tam)
 {
@@ -230,8 +225,11 @@ float maioriaVet(float a[], int tam)
             {
                 moda = a[i];
                 maiorOcorrencia = ocorre;
-            }else if (ocorre == maiorOcorrencia){
-                if(moda > a[i]){
+            }
+            else if (ocorre == maiorOcorrencia)
+            {
+                if (moda > a[i])
+                {
                     moda = a[i];
                 }
             }

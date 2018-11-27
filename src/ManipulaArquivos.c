@@ -118,7 +118,7 @@ float **leDados(FILE *p, int *l, int *c)
         matriz = realloc(matriz, (k + 1) * sizeof(float *));
     }
 
-    *l = k; // Retorna linhas (k vizinhos)
+    *l = k;        // Retorna linhas (k vizinhos)
     *c = features; // Retorna colunas (cada vírgula é uma coluna) (cada k uma lágrima)
     return matriz; // Retorna matriz gerada
 }

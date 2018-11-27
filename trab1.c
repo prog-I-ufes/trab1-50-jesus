@@ -52,7 +52,6 @@ int main()
     if (ftreino == NULL)
     {
         printf("Nao foi possivel abrir o %s\n", pathTreino);
-        
 
         if (fteste != NULL)
         {

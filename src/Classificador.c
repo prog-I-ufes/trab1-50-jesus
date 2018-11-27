@@ -95,7 +95,6 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
                 fprintf(fpredicoes, " |%.2f| ", kPrimeirosRotulos[m] - 1);
             }
             fprintf(fpredicoes," - <Novo rotulo = %.2f>\n", novaClassificacao[i] - 1);*/
-
         }
         break;
 
