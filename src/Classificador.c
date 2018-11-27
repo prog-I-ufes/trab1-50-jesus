@@ -190,7 +190,7 @@ void predict(int predicoes, char pathPredicoes[], int k, char tipoDist, float rM
         fprintf(fpredicoes, "%d\n", (int)(novaClassificacao[i] - 1));
     }
 
-    // Volta com o path original ""
+    // Volta com o path original
     printf("O arquivo (%s) foi escrito\n", pathPredicoes);
     strcpy(pathPredicoes, pathAux);
 

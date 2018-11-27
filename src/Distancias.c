@@ -20,7 +20,7 @@ void distMinkowski(float p[], float q[], int k, float r, float *distM)
     absVet(s, k, s);                     // (|pi - qi|), ..., (|pn - qn|)
     expVet(s, k, r, s);                  // (|pi - qi|) ^ r, ..., (|pn - qn|) ^ r
     somaElementosVet(s, k, &distancias); // (|pi - qi|) ^ r + ... + (|pn - qn|) ^ r
-    distancias = pow(distancias, 1 / r); // (|pi - qi|) ^ r + ... + ((|pn - qn|) ^ r) ^ (1 / r)
+    distancias = pow(distancias, 1 / r); // ((|pi - qi|) ^ r + ... + (|pn - qn|) ^ r) ^ (1 / r)
     *distM = distancias;
 }
 
